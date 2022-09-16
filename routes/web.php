@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,13 @@ Route::prefix('cms/admin/')->group(function(){
 
     Route::resource('customers' , CustomerController::class);
     Route::post('customers_update/{id}' , [CustomerController::class , 'update'])->name('customers_update');
+
+
+    Route::resource('medicines' , MedicineController::class);
+    Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
+    Route::get('/create/medicines/{id}', [MedicineController::class, 'indexMedicine'])->name('indexMedicine');
+    Route::get('/index/medicines/{id}', [MedicineController::class, 'createMedicine'])->name('createMedicine');
+
+    // Route::resource('medicines' , MedicineController::class);
+    // Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
 });

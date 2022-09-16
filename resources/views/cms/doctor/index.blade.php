@@ -42,6 +42,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>image</th>
+                <th>medicines</th>
                 <th>gender</th>
                 <th>status</th>
                 <th>Setting</th>
@@ -62,9 +63,10 @@
                         <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/doctor/'. $doctor->user->image)}}" width="50" height="50" alt="User Image">
                     </td>
 
-                   {{--  <td><a href="{{route('indexArticle',['id'=>$doctor->id])}}"
-                    class="btn btn-info">({{$doctor->articles_count}})
-                    article/s</a> </td>  --}}
+                    <td><a href="{{route('indexMedicine',['id'=>$doctor->id])}}"
+                        class="btn btn-info">({{$doctor->doctors_count}})
+                        medicines/s</a> </td>
+                   
 
                 <td>
                     <td>{{ $doctor->user ? $doctor->user->gender : "Null" }}</td>

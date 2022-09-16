@@ -13,4 +13,8 @@ class Doctor extends Model
         return $this->morphOne(User::class , 'actor' , 'actor_type' , 'actor_id' , 'id');
 
     }
+
+    public function medicines(){
+        return $this->hasMany(Medicine::class);
+    }
 }
