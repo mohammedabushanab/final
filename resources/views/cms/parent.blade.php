@@ -492,6 +492,25 @@
 
             </ul>
           </li>
+          <li class="nav-header">Settings</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-edit text-info"></i>
+              <p class="text">edit Profile</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-key text-success"></i>
+              <p>Change Password</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('view.logout')}}" class="nav-link">
+              <i class="fas fa-sign-out-alt text-danger"></i>
+              <p>LogOut</p>
+            </a>
+          </li>
 
  {{--  <li class="nav-item">  --}}
             {{--  <a href="#" class="nav-link">

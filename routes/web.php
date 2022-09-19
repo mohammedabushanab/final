@@ -7,6 +7,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
+    route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
+    route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
+});
+Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
+    route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
+
 });
 
-Route::prefix('cms/admin/')->group(function(){
+Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
 

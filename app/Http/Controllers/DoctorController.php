@@ -20,7 +20,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('user')->orderBy('id' , 'desc')->get();
+        $doctors = Doctor::with('user')->withCount('medicines')->orderBy('id' , 'desc')->get();
         return response()->view('cms.doctor.index' , compact('doctors'));
     }
 
