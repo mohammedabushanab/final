@@ -1,12 +1,16 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
+use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +55,22 @@ Route::prefix('cms/admin/')->group(function(){
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
     Route::get('/create/medicines/{id}', [MedicineController::class, 'indexMedicine'])->name('indexMedicine');
     Route::get('/index/medicines/{id}', [MedicineController::class, 'createMedicine'])->name('createMedicine');
+
+
+
+    Route::resource('abouts' , AboutController::class);
+    Route::post('abouts_update/{id}' , [AboutController::class , 'update'])->name('abouts_update');
+    Route::get('/create/abouts/{id}', [AboutController::class, 'indexAbout'])->name('indexAbout');
+    Route::get('/index/abouts/{id}', [AboutController::class, 'createAbout'])->name('createAbout');
+
+
+
+    Route::resource('stores' , StroeController::class);
+    Route::post('stores_update/{id}' , [StroeController::class , 'update'])->name('stores_update');
+    Route::get('/create/stores/{id}', [StroeController::class, 'indexStore'])->name('indexStore');
+    Route::get('/index/stores/{id}', [StroeController::class, 'createStore'])->name('createStore');
+
+    // Route::resource('stores' , StoreController::class);
 
     // Route::resource('medicines' , MedicineController::class);
     // Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');

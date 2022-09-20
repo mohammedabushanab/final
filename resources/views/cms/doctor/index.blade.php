@@ -64,11 +64,11 @@
                     </td>
 
                     <td><a href="{{route('indexMedicine',['id'=>$doctor->id])}}"
-                        class="btn btn-info">({{$doctor->doctors_count}})
+                        class="btn btn-info">({{$doctor->medicines_count}})
                         medicines/s</a> </td>
-                   
 
-                <td>
+
+                
                     <td>{{ $doctor->user ? $doctor->user->gender : "Null" }}</td>
                     <td>{{ $doctor->user ? $doctor->user->status : "Null" }}</td>
 

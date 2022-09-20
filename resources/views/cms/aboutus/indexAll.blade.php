@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Index medicine')
+@section('title' , 'Index about')
 
-@section('main-title' , 'Index medicine')
+@section('main-title' , 'Index about')
 
-@section('sub-title' , 'index medicine')
+@section('sub-title' , 'index about')
 
 @section('styles')
 
@@ -37,36 +37,32 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>medicine Name</th>
+                <th>title</th>
                 <th>image</th>
-                <th>code</th>
-                <th>ExpirationDate</th>
                 <th>Description</th>
 
-                <th>Setting</th>
+                {{--  <th>Setting</th>  --}}
               </tr>
             </thead>
             <tbody>
 
-                @foreach ( $medicines as $medicine )
+                @foreach ( $abouts as $about )
                 <tr>
-                    <td>{{ $medicine->id }}</td>
-                    <td>{{ $medicine->name }}</td>
+                    <td>{{ $about->id }}</td>
+                    <td>{{ $about->title }}</td>
                     <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" width="50" height="50" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/about/'. $about->image)}}" width="50" height="50" alt="User Image">
                      </td>
-                    <td>{{ $medicine->ExpirationDate }}</td>
-                    <td>{{ $medicine->code }}</td>
-                    <td>{{ $medicine->description }}</td>
+                    <td>{{ $about->description }}</td>
 
 
-                    <td>
+                    {{--  <td>
                         <div class="btn-group">
-                            <a href="{{route('medicines.edit' , $medicine->id)}}" type="button" class="btn btn-primary">Edit</a>
-                            <a href="#" onclick="performDestroy({{$medicine->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+                            <a href="{{route('abouts.edit' , $about->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            <a href="#" onclick="performDestroy({{$about->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                           </div>
-                    </td>
+                    </td>  --}}
                   </tr>
                 @endforeach
 
@@ -76,7 +72,7 @@
           </table>
         </div>
 
-        {{ $medicines->links() }}
+        {{ $abouts->links() }}
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
@@ -95,7 +91,7 @@
 
 <script>
   function performDestroy(id , reference){
-    let url = '/cms/admin/medicines/'+id;
+    let url = '/cms/admin/abouts/'+id;
     confirmDestroy(url,reference);
   }
 </script>

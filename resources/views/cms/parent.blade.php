@@ -376,16 +376,73 @@
                   <p>Index</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{--  <li class="nav-item">
                 <a href="{{ route('medicines.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
-              </li>
+              </li>  --}}
 
             </ul>
           </li>
 
+
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-globe-americas"></i>
+              <p>
+                stores
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('stores.index') }}" class="nav-link">
+                  <i class="fas fa-list-alt nav-icon"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+              {{--  <li class="nav-item">
+                <a href="{{ route('medicines.create') }}" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>  --}}
+
+            </ul>
+          </li>
+
+
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-globe-americas"></i>
+              <p>
+                about us
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('abouts.index') }}" class="nav-link">
+                  <i class="fas fa-list-alt nav-icon"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+              {{--  <li class="nav-item">
+                <a href="{{ route('abouts.create') }}" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>  --}}
+
+            </ul>
+          </li>
           {{--  <li class="nav-header">Content Mangment</li>  --}}
 {{--
           <li class="nav-item">
