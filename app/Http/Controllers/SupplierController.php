@@ -15,7 +15,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::with('user')->orderBy('id' , 'desc')->get();
+        $suppliers = Supplier::with('user')->withCount('stores')->orderBy('id' , 'desc')->get();
         return response()->view('cms.supplier.index' , compact('suppliers'));
     }
 

@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Index medicine')
+@section('title' , 'Index medicinestore')
 
-@section('main-title' , 'Index medicine')
+@section('main-title' , 'Index medicinestore')
 
-@section('sub-title' , 'index medicine')
+@section('sub-title' , 'index medicinestore')
 
 @section('styles')
 
@@ -17,6 +17,7 @@
       <div class="card">
         <div class="card-header">
           {{--  <h3 class="card-title">Data of medicine</h3>  --}}
+                <a href="{{route('createStore' , $id)}}" type="button" class="btn btn-success">Add New medicine</a>
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -35,38 +36,37 @@
         <div class="card-body table-responsive p-0">
           <table class="table table-hover text-nowrap">
             <thead>
-              <tr>
-                <th>ID</th>
-                <th>medicine Name</th>
-                <th>image</th>
-                <th>code</th>
-                <th>ExpirationDate</th>
-                <th>Description</th>
-
-                <th>Setting</th>
-              </tr>
-            </thead>
-            <tbody>
-
-                @foreach ( $medicines as $medicine )
                 <tr>
-                    <td>{{ $medicine->id }}</td>
-                    <td>{{ $medicine->name }}</td>
-                    <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" width="50" height="50" alt="User Image">
-                     </td>
-                    <td>{{ $medicine->ExpirationDate }}</td>
-                    <td>{{ $medicine->code }}</td>
-                    <td>{{ $medicine->description }}</td>
+                  <th>ID</th>
+                  <th>medicine Name</th>
+                  <th>count</th>
 
+                  <th>Setting</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                @foreach ( $stores as $store )
+                <tr>
+                    <td>{{ $store->id }}</td>
+                    <td>{{ $store->name }}</td>
+
+                    <td>{{ $store->count }}</td>
 
                     <td>
+                        <div class="btn-group">
+                            <a href="{{route('stores.edit' , $store->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            <a href="#" onclick="performDestroy({{$store->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+
+                          </div>
+                    </td>
+                    {{-- <td>
                         <div class="btn-group">
                             <a href="{{route('medicines.edit' , $medicine->id)}}" type="button" class="btn btn-primary">Edit</a>
                             <a href="#" onclick="performDestroy({{$medicine->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                           </div>
-                    </td>
+                    </td> --}}
                   </tr>
                 @endforeach
 
@@ -76,7 +76,7 @@
           </table>
         </div>
 
-        {{ $medicines->links() }}
+        {{ $stores->links() }}
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
@@ -95,7 +95,7 @@
 
 <script>
   function performDestroy(id , reference){
-    let url = '/cms/admin/medicines/'+id;
+    let url = '/cms/admin/stores/'+id;
     confirmDestroy(url,reference);
   }
 </script>

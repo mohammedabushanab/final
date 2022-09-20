@@ -14,4 +14,11 @@ class Admin extends Authenticatable
         return $this->morphOne(User::class , 'actor' , 'actor_type' , 'actor_id' , 'id');
 
     }
+
+
+
+
+    public function abouts(){
+        return $this->hasMany(About::class);
+    }
 }

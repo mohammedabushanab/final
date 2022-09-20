@@ -42,6 +42,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>image</th>
+                <td>store</td>
                 <th>gender</th>
                 <th>status</th>
                 <th>Setting</th>
@@ -60,6 +61,12 @@
                     <td>
                       <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/supplier/'. $supplier->user->image)}}" width="50" height="50" alt="User Image">
                    </td>
+
+                   <td><a href="{{route('indexStore',['id'=>$supplier->id])}}"
+                    class="btn btn-info">({{$supplier->stores_count}})
+                    stores/s</a> </td>
+
+
                     <td>{{ $supplier->user ? $supplier->user->gender : "Null" }}</td>
                     <td>{{ $supplier->user ? $supplier->user->status : "Null" }}</td>
 

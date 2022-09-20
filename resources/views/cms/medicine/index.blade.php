@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Index Article')
+@section('title' , 'Index medicine')
 
-@section('main-title' , 'Index Article')
+@section('main-title' , 'Index medicine')
 
-@section('sub-title' , 'index article')
+@section('sub-title' , 'index medicine')
 
 @section('styles')
 
@@ -16,7 +16,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          {{-- <h3 class="card-title">Data of Article</h3> --}}
+          <h3 class="card-title">Data of medicine</h3>
                 <a href="{{route('createMedicine' , $id)}}" type="button" class="btn btn-success">Add New medicine</a>
 
           <div class="card-tools">
@@ -69,8 +69,8 @@
                     </td>
                     {{-- <td>
                         <div class="btn-group">
-                            <a href="{{route('articles.edit' , $article->id)}}" type="button" class="btn btn-primary">Edit</a>
-                            <a href="#" onclick="performDestroy({{$article->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+                            <a href="{{route('medicines.edit' , $medicine->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            <a href="#" onclick="performDestroy({{$medicine->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                           </div>
                     </td> --}}

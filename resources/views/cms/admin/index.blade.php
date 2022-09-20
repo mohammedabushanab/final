@@ -42,6 +42,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>image</th>
+                <th>about</th>
                 <th>gender</th>
                 <th>status</th>
                 <th>Setting</th>
@@ -60,6 +61,11 @@
                     <td>
                       <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/admin/'. $admin->user->image)}}" width="50" height="50" alt="User Image">
                    </td>
+
+                   <td><a href="{{route('indexAbout',['id'=>$admin->id])}}"
+                    class="btn btn-info">({{$admin->abouts_count}})
+                    abouts/s</a> </td>
+
                     <td>{{ $admin->user ? $admin->user->gender : "Null" }}</td>
                     <td>{{ $admin->user ? $admin->user->status : "Null" }}</td>
 

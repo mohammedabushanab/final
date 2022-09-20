@@ -68,7 +68,6 @@
                         medicines/s</a> </td>
 
 
-
                     <td>{{ $doctor->user ? $doctor->user->gender : "Null" }}</td>
                     <td>{{ $doctor->user ? $doctor->user->status : "Null" }}</td>
 

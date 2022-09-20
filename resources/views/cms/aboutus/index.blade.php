@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Index medicine')
+@section('title' , 'Index about')
 
-@section('main-title' , 'Index medicine')
+@section('main-title' , 'Index about')
 
-@section('sub-title' , 'index medicine')
+@section('sub-title' , 'index about')
 
 @section('styles')
 
@@ -16,7 +16,8 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          {{--  <h3 class="card-title">Data of medicine</h3>  --}}
+          <h3 class="card-title">Data of about</h3>
+                <a href="{{route('createAbout' , $id)}}" type="button" class="btn btn-success">Add New about</a>
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -35,38 +36,40 @@
         <div class="card-body table-responsive p-0">
           <table class="table table-hover text-nowrap">
             <thead>
-              <tr>
-                <th>ID</th>
-                <th>medicine Name</th>
-                <th>image</th>
-                <th>code</th>
-                <th>ExpirationDate</th>
-                <th>Description</th>
-
-                <th>Setting</th>
-              </tr>
-            </thead>
-            <tbody>
-
-                @foreach ( $medicines as $medicine )
                 <tr>
-                    <td>{{ $medicine->id }}</td>
-                    <td>{{ $medicine->name }}</td>
+                  <th>ID</th>
+                  <th>title</th>
+                  <th>image</th>
+                  <th>Description</th>
+
+                  <th>Setting</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                @foreach ( $abouts as $about )
+                <tr>
+                    <td>{{ $about->id }}</td>
+                    <td>{{ $about->title }}</td>
                     <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" width="50" height="50" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/about/'. $about->image)}}" width="50" height="50" alt="User Image">
                      </td>
-                    <td>{{ $medicine->ExpirationDate }}</td>
-                    <td>{{ $medicine->code }}</td>
-                    <td>{{ $medicine->description }}</td>
-
+                    <td>{{ $about->description }}</td>
 
                     <td>
+                        <div class="btn-group">
+                            <a href="{{route('abouts.edit' , $about->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            <a href="#" onclick="performDestroy({{$about->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+
+                          </div>
+                    </td>
+                    {{-- <td>
                         <div class="btn-group">
                             <a href="{{route('medicines.edit' , $medicine->id)}}" type="button" class="btn btn-primary">Edit</a>
                             <a href="#" onclick="performDestroy({{$medicine->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                           </div>
-                    </td>
+                    </td> --}}
                   </tr>
                 @endforeach
 
@@ -76,7 +79,7 @@
           </table>
         </div>
 
-        {{ $medicines->links() }}
+        {{ $abouts->links() }}
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
@@ -95,7 +98,7 @@
 
 <script>
   function performDestroy(id , reference){
-    let url = '/cms/admin/medicines/'+id;
+    let url = '/cms/admin/abouts/'+id;
     confirmDestroy(url,reference);
   }
 </script>
