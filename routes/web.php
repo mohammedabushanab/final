@@ -7,9 +7,11 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +28,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
+Route::prefix('cms/')->group(function(){
     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
+
+    Route::get('password/edit' , [UserAuthController::class , 'editPassword'])->name('cms.admin.edit-password');
+    Route::post('update/password', [UserAuthController::class, 'updatePassword'])->name('cms.auth.update-password');
+
+
 });
-Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
+Route::prefix('cms/admin')->group(function(){
     route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
 
 });
@@ -78,6 +85,8 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::get('/create/stores/{id}', [StroeController::class, 'createStore'])->name('createStore');
 
     // Route::resource('stores' , StoreController::class);
+
+
 
     Route::resource('medicines' , MedicineController::class);
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');

@@ -17,4 +17,9 @@ class Doctor extends Model
     public function medicines(){
         return $this->hasMany(Medicine::class);
     }
+    public function store(){
+        return $this->hasMany(Store::class);
+    }
+
+
 }

@@ -47,9 +47,18 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-4" >
+                    <label for="store_id"> medicine Name</label>
+                    <select class="form-control" name="store_id" style="width: 100%;"
+                        id="store_id" aria-label=".form-select-sm example">
+                        @foreach ($stores as $store )
+                            <option value="{{ $store->id }}" >{{ $store->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-12" >
                   <label for="name">medicine Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name of medicine">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name of medicine" value="{{  $store->name }}">
                 </div>
                 <div class="form-group col-md-12">
                   <label for="code">medicine code</label>
@@ -106,6 +115,7 @@
     formData.append('description',document.getElementById('description').value);
     formData.append('doctor_id',document.getElementById('doctor_id').value);
     formData.append('category_id',document.getElementById('category_id').value);
+    formData.append('store_id',document.getElementById('store_id').value);
     formData.append('image',document.getElementById('image').files[0]);
 
     store('/cms/admin/medicines' ,formData );

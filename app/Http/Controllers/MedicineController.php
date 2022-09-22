@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Doctor;
 use App\Models\Medicine;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -29,8 +30,10 @@ class MedicineController extends Controller
     public function createMedicine($id)
     {
         $categories = Category::all();
+        $stores = Store::all();
+
         $medicines = Medicine::all();
-        return response()->view('cms.medicine.create', compact('categories' , 'medicines','id'));
+        return response()->view('cms.medicine.create', compact('categories','stores' , 'medicines','id'));
 
     }
     public function index()
@@ -44,9 +47,11 @@ class MedicineController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $stores = Store::all();
+
         $medicines = Medicine::all();
 
-        return response()->view('cms.medicine.create' , compact('categories' , 'medicines'));
+        return response()->view('cms.medicine.create' , compact('categories','stores' , 'medicines'));
     }
 
 
@@ -70,6 +75,8 @@ class MedicineController extends Controller
             $medicines->description = $request->get('description');
             $medicines->doctor_id = $request->get('doctor_id');
             $medicines->category_id = $request->get('category_id');
+            $medicines->store_id = $request->get('store_id');
+
             if (request()->hasFile('image')) {
 
                 $image = $request->file('image');
@@ -113,10 +120,11 @@ class MedicineController extends Controller
     public function edit($id)
     {
         $categories = Category::all();
+        $stores = Store::all();
         $doctors = Doctor::all();
         $medicines = Medicine::findOrFail($id);
 
-        return response()->view('cms.medicine.edit' , compact('categories' , 'doctors' , 'medicines'));
+        return response()->view('cms.medicine.edit' , compact('categories','stores' , 'doctors' , 'medicines'));
 
     }
 
@@ -141,6 +149,8 @@ class MedicineController extends Controller
             $medicines->description = $request->get('description');
             $medicines->doctor_id = $request->get('doctor_id');
             $medicines->category_id = $request->get('category_id');
+            $medicines->store_id = $request->get('store_id');
+
             if (request()->hasFile('image')) {
 
                 $image = $request->file('image');

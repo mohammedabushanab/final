@@ -34,6 +34,15 @@
 
                 <!-- /.form-group -->
 
+                <div class="form-group col-md-4" hidden>
+                    <label for="supplier_id"> supplier Name</label>
+                    <select class="form-control" name="supplier_id" style="width: 100%;"
+                        id="supplier_id" aria-label=".form-select-sm example">
+                        @foreach ($suppliers as $supplier )
+                            <option value="{{ $supplier->id }}" >{{ $supplier->user->firstname }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 {{-- <div class="form-group col-md-4" >
                     <label for="supplier_id"> supplier Name</label>
                     <select class="form-control" name="supplier_id" style="width: 100%;"
@@ -128,6 +137,7 @@
     let formData = new FormData();
     formData.append('name',document.getElementById('name').value);
     formData.append('count',document.getElementById('count').value);
+    formData.append('supplier_id',document.getElementById('supplier_id').value);
 
 
 
