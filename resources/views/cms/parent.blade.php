@@ -549,53 +549,18 @@
 
             </ul>
           </li>
-          <li class="nav-header">Settings</li>
+          {{--  <li class="nav-header">Settings</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-edit text-info"></i>
               <p class="text">edit Profile</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-key text-success"></i>
-              <p>Change Password</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('view.logout')}}" class="nav-link">
-              <i class="fas fa-sign-out-alt text-danger"></i>
-              <p>LogOut</p>
-            </a>
-          </li>
+          </li>  --}}
 
- {{--  <li class="nav-item">  --}}
-            {{--  <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-globe-americas"></i>
-              <p>
-                Article
-                <i class="fas fa-angle-left right"></i>
 
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('articles.index') }}" class="nav-link">
-                  <i class="fas fa-list-alt nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('articles.create') }}" class="nav-link">
-                  <i class="fas fa-plus-circle nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
 
-          <li class="nav-header">Websit Mangment</li>
+          {{--  <li class="nav-header">Websit Mangment</li>
 
           <li class="nav-item">
 
@@ -661,30 +626,41 @@
               </li>
 
           </ul>
-        </li>
+        </li>  --}}
 
           <li class="nav-header">Setting</li>
+          @if (Auth::guard('admin')->id())
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-edit"></i>
+            <a href="{{ route('cms.auth.profile-edit') }}" class="nav-link">
+                <i class="nav-icon fas fa-user-edit text-info"></i>
+                <p>  edit Profile</p>
+            </a>
+          </li>
+          @elseif (Auth::guard('doctor')->id())
+          <li class="nav-item">
+            <a href="{{ route('doctor_edit') }}" class="nav-link">
+                <i class="nav-icon fas fa-user-edit text-info"></i>
+              <p>  edit Profile</p>
+            </a>
+          </li>
+        @endif
 
-              <p class="text">Edit Profile</p>
+        @if (Auth::guard('admin')->id())
+        <li class="nav-item">
+            <a href="{{ route('cms.admin.edit-password') }}" class="nav-link">
+                <i class="nav-icon fas fa-key"></i>
+                <p>Change Password</p>
             </a>
           </li>
+          @endif
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-key"></i>
-              <p>Change Password</p>
+            <a href="{{ route('view.logout')}}" class="nav-link">
+              <i class="fas fa-sign-out-alt text-danger"></i>
+              <p>LogOut</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('view.logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-               <i class="fas fa-sign-out-alt"></i>
-                    <p>Logout</p>
-            </a>
-          </li>
-        </ul>  --}}
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

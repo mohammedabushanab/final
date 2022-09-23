@@ -32,12 +32,16 @@ Route::prefix('cms/')->group(function(){
     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
 
-    Route::get('password/edit' , [UserAuthController::class , 'editPassword'])->name('cms.admin.edit-password');
-    Route::post('update/password', [UserAuthController::class, 'updatePassword'])->name('cms.auth.update-password');
 
 
 });
 Route::prefix('cms/admin')->group(function(){
+
+    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
+    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
+    Route::get('password/edit' , [SettingController::class , 'editPassword'])->name('cms.admin.edit-password');
+    Route::post('update/password', [SettingController::class, 'updatePassword'])->name('cms.auth.update-password');
+
     route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
 
 });
