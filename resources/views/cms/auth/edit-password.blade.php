@@ -1,10 +1,10 @@
-@extends('dashboard.parent')
+@extends('cms.parent')
 
-@section('title',' تغيير كلمة المرور')
+@section('title','change password ')
 
-@section('sub-title','  كلمة المرور  ')
+@section('sub-title','  change password ')
 
-@section('active title',' تغيير كلمة المرور  ')
+@section('active title',' change password ')
 @section('styles')
 
 @endsection
@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                   <div class="card-header">
-                      <h3 class="card-title">تغيير كلمة المرور</h3>
+                      <h3 class="card-title">change password</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -61,7 +61,7 @@
 
                       <!-- /.card-body -->
                       <div class="card-footer">
-                          <button type="button" onclick="performStore()" class="btn btn-lg btn-success">تغيير كلمة المرور</button>
+                          <button type="button" onclick="performStore()" class="btn btn-lg btn-success">change password</button>
                          {{-- <a href="{{route('cities.index')}}"><button type="button" class="btn btn-lg btn-primary"> قائمة المدن </button></a> --}}
                       </div>
                   </form>

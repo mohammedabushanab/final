@@ -57,11 +57,8 @@
                     </select>
                 </div>
                 <div class="form-group col-md-12" >
+
                   <label for="name">medicine Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name of medicine" value="{{  $store->name }}">
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="code">medicine code</label>
                   <input type="text" class="form-control" name="code" id="code" placeholder="Enter code of medicine">
                 </div>
                 <div class="form-group col-md-12">

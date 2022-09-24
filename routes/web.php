@@ -36,7 +36,6 @@ Route::prefix('cms/')->group(function(){
 
 });
 Route::prefix('cms/admin')->group(function(){
-
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('password/edit' , [SettingController::class , 'editPassword'])->name('cms.admin.edit-password');
@@ -49,6 +48,7 @@ Route::prefix('cms/admin')->group(function(){
 Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
+    Route::view('' , 'cms.home')->name('home');
 
     Route::resource('admins' , AdminController::class);
     Route::post('admins_update/{id}' , [AdminController::class , 'update'])->name('admins_update');

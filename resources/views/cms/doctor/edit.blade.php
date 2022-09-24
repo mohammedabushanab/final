@@ -108,8 +108,8 @@
                 </div>
                 </div>
                 {{--  <div class="form-group col-md-12">
-                    <label for="file">File of Author</label>
-                    <input type="file" class="form-control" name="file" id="file" placeholder="Enter File of Author">
+                    <label for="file">File of doctor</label>
+                    <input type="file" class="form-control" name="file" id="file" placeholder="Enter File of doctor">
                   </div>  --}}
 
               </div>

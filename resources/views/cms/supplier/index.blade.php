@@ -73,7 +73,7 @@
                     <td>
 
                         <div class="btn-group">
-                            <a href="{{route('suppliers.edit' , $supplier->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            {{--  <a href="{{route('suppliers.edit' , $supplier->id)}}" type="button" class="btn btn-primary">Edit</a>  --}}
                             <a href="#" onclick="performDestroy({{$supplier->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                             {{-- <button type="button" class="btn btn-success">View</button> --}}
