@@ -72,11 +72,11 @@ License: You must have a valid license purchased only from themeforest(the above
 									<img src="{{ asset('cms/assets/media/logos/pharmcy.png') }}" width="35%">
 								</a>
 							</div>
-							<div class="kt-login__signin">
+							 {{-- <div class="kt-login__signin">
 								<div class="kt-login__head">
-									<h3 class="kt-login__title">Sign In To <b>DashPord</b></h3>
-								</div>
-								<form class="kt-form" action="">
+									<h3 class="kt-login__title">Sign Up <b>DashPord</b></h3>
+								</div> --}}
+								 {{-- <form class="kt-form" action="">
 									<div class="input-group">
 										<input for="email" class="form-control" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
 									</div>
@@ -98,22 +98,68 @@ License: You must have a valid license purchased only from themeforest(the above
 										<button   onclick="login()"  class="btn btn-brand btn-pill kt-login__btn-primary">Sign In</button>
 									</div>
 								</form>
-							</div>
-							<div class="kt-login__signup">
+							</div> --}}
+							<div class="kt-login">
 								<div class="kt-login__head">
 									<h3 class="kt-login__title">Sign Up</h3>
 									<div class="kt-login__desc">Enter your details to create your account:</div>
 								</div>
+
 								<form class="kt-form" action="">
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Fullname"  id="fullname" name="fullname">
+										<input class="form-control" type="text" placeholder="Enter first Name"  id="firstName" name="firstName">
 									</div>
+                                    <div class="input-group">
+
+                                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter Last Name">
+                                      </div>
+
+                                   <div class="input-group">
+
+                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile">
+                              </div>
 									<div class="input-group">
 										<input class="form-control" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
 									</div>
 									<div class="input-group">
 										<input class="form-control" type="password" placeholder="Password" id="password" name="password">
 									</div>
+                                    <div class="input-group">
+                                        <div></div>
+                                        <div class="form-control">
+                                            <input type="file" placeholder="Choose File" class="custom-file-input" id="image" name="image">
+                                            <label class="custom-file-label" for="customFile">Choose image</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                       <label for="date_of_birth"> Date of Birth</label>
+                                       <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter First Date of birth">
+                                     </div>
+                                           <div class="form-group col-md-4">
+                                         <label for="gender">Gender </label>
+                                         <select class="form-control" name="gender" style="width: 100%;"
+                                             id="gender" aria-label=".form-select-sm example">
+                                                 <option value="" >Chosse Gender</option>
+                                                 <option value="male" >Male</option>
+                                                 <option value="female" >FeMale</option>
+
+                                         </select>
+                                     </div>
+
+                                           <div class="form-group col-md-4">
+                                         <label for="status">Status</label>
+                                         <select class="form-control" name="status" style="width: 100%;"
+                                             id="status" aria-label=".form-select-sm example">
+                                                 <option value="" >Chosse Statud</option>
+                                                 <option value="active" >Active</option>
+                                                 <option value="inactive" >In Active</option>
+                                         </select>
+                                     </div>
+
+
+                                   </div>
+
 									{{-- <div class="input-group">
 										<input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
 									</div> --}}
@@ -127,12 +173,12 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 									</div>
 									<div class="kt-login__actions">
-										<button id="kt_login_signup_submit"  onclick="register()" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
-										<button id="kt_login_signup_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
+										<button id="kt_login_signup_submit"  onclick="Register()" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
+										{{-- <a href="{{ route('view.login', $guard) }}" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</a> --}}
 									</div>
 								</form>
 							</div>
-							 <div class="kt-login__forgot">
+							 {{-- <div class="kt-login__forgot">
 								<div class="kt-login__head">
 									<h3 class="kt-login__title">Forgotten Password ?</h3>
 									<div class="kt-login__desc">Enter your email to reset your password:</div>
@@ -143,16 +189,16 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<div class="kt-login__actions">
 										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Request</button>&nbsp;&nbsp;
-										{{-- <a href="{{ route('view.login') }}" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</a> --}}
+										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
 									</div>
 								</form>
-							</div>
-							<div class="kt-login__account">
+							</div> --}}
+							{{-- <div class="kt-login__account">
 								<span class="kt-login__account-msg">
 									Don't have an account yet ?
 								</span>
-								&nbsp;&nbsp;
-								<a href="{{ route('view.register' , $guard)}}"  class="kt-login__account-link">Sign Up!</a>
+								&nbsp;&nbsp; --}}
+								{{-- <a href="javascript:;" id="kt_login_signup" class="kt-login__account-link">Sign Up!</a> --}}
 							</div>
 						</div>
 					</div>
@@ -201,7 +247,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin:: Vendor Plugins -->
 		  <script src="{{ asset('cms/assets/plugins/general/jquery/dist/jquery.js') }}" type="text/javascript"></script>
 		<script src="{{ asset('cms/assets/plugins/general/popper.js/dist/umd/popper.js') }}" type="text/javascript"></script>
-
+        <script src="{{ asset('cms/assets/js/pages/crud/file-upload/dropzonejs.js') }}" type="text/javascript"></script>
 
 		<!--end:: Vendor Plugins -->
 		<script src="{{ asset('cms/assets/js/scripts.bundle.js') }}" type="text/javascript"></script>
@@ -217,19 +263,38 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ asset('cms/plugins/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('cms/js/crud.js') }}"></script>
+<script>
+    function Register(){
+        let formData=new FormData();
+        formData.append('firstName' , document.getElementById('firstName').value);
+        formData.append('lastName',document.getElementById('lastName').value);
+     formData.append('mobile',document.getElementById('mobile').value);
+    formData.append('gender',document.getElementById('gender').value);
+    formData.append('status',document.getElementById('status').value);
+    formData.append('email',document.getElementById('email').value);
+    formData.append('password',document.getElementById('password').value);
+    formData.append('date_of_birth',document.getElementById('date_of_birth').value);
+    formData.append('image',document.getElementById('image').files[0]);
+        formData.append('email' , document.getElementById('email').value);
+
+        store('/cms/admin/confirm',formData);
+
+
+    }
+</script>
 		<!--end::Page Scripts -->
-        <script>
+       <!--  <script>
             function login(url,data) {
-                var guard = '{{ request('guard')}}';
-            axios.post('/cms/'+guard+'/login', {
+                {{-- var guard = '{{ request('guard')}}'; --}}
+            axios.post('/cms/'+guard+'/register', {
                 email : document.getElementById('email').value,
                 password : document.getElementById('password').value,
                 // remember:document.getElementById('email').checked,
                 guard: guard,
             })
-        .then(function(response){
-            window.location.href='/cms/admin'
-        })
+        // .then(function(response){
+        //     window.location.href='/cms/'+guard+'/login'
+        // })
         .catch(function(error){
             if(error.response.data.errors!==undefined){
                 showErrorMessages(error.response.data.errors);
@@ -243,6 +308,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         }
         </script>
+    -->
 
 	</body>
 

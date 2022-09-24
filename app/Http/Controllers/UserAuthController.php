@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\Guard;
 
 class UserAuthController extends Controller
 {
@@ -11,7 +12,7 @@ class UserAuthController extends Controller
         return response()->view('cms.auth.login' ,compact('guard'));
     }
 
-    public function login(Request $request ){
+    public function login(Request $request){
         $validator=Validator($request->all(),[
             'email'=>'required|email',
             'password'=>'required|string',
@@ -47,3 +48,4 @@ class UserAuthController extends Controller
         return redirect()->route('view.login', $guard);
     }
 }
+

@@ -6,10 +6,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\Website\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,17 +26,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ Route::get('/temp', function () {
+     return view('website.thankyou');
+ });
 Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
+    route::get('{guard}/register' , [RegisterController::class, 'register'])->name('view.register');
+    Route::Post('{guard}/confirm' , [RegisterController::class ,'storeRegister']);
 });
 Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
     route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
 
 });
+
+
 
 Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::view('' , 'cms.parent');
@@ -82,3 +89,17 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::resource('medicines' , MedicineController::class);
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
 });
+
+Route::prefix('/home')->group(function() {
+
+
+    Route::get('index' , [IndexController::class , 'index'])->name('website.index');
+    Route::get('aboutUs' , [IndexController::class , 'about'])->name('website.about');
+    Route::get('checkout' , [IndexController::class , 'checkout'])->name('website.checkout');
+    Route::get('contact' , [IndexController::class , 'contact'])->name('website.contact');
+    Route::get('shopSingle' , [IndexController::class , 'shopSingle'])->name('website.shopsingle');
+    Route::get('shop' , [IndexController::class , 'shop'])->name('website.shop');
+    Route::get('thankyou' , [IndexController::class , 'thank'])->name('website.thankyou');
+    Route::get('cart' , [IndexController::class , 'cart'])->name('website.cart');
+
+    });
