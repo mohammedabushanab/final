@@ -68,14 +68,14 @@
                     article/s</a> </td>  --}}
 
                     <td>{{ $customer->age }}</td>
-               
+
 
                     <td>{{ $customer->user ? $customer->user->status : "Null" }}</td>
 
                     <td>
 
                         <div class="btn-group">
-                            <a href="{{route('customers.edit' , $customer->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            {{--  <a href="{{route('customers.edit' , $customer->id)}}" type="button" class="btn btn-primary">Edit</a>  --}}
                             <a href="#" onclick="performDestroy({{$customer->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                             {{-- <button type="button" class="btn btn-success">View</button> --}}

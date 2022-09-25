@@ -6,6 +6,10 @@
 
 @section('sub-title' , 'SUB TEMP')
 
+@section('page title', 'page title')
+@section('active title', 'active title')
+
+
 @section('styles')
 
 @endsection

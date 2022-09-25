@@ -65,7 +65,7 @@ class StroeController extends Controller
             $stores = new Store();
             $stores->name = $request->get('name');
             $stores->count = $request->get('count');
-            // $stores->supplier_id = $request->get('supplier_id');
+            $stores->supplier_id = $request->get('supplier_id');
 
             $isSaved = $stores->save();
             if($isSaved){
@@ -98,10 +98,10 @@ class StroeController extends Controller
      */
     public function edit($id)
     {
-        // $suppliers = Supplier::all();
+        $suppliers = Supplier::all();
         $stores = Store::findOrFail($id);
 
-        return response()->view('cms.store.edit' , compact('stores'));
+        return response()->view('cms.store.edit' , compact('stores','suppliers'));
 
     }
 
@@ -122,7 +122,7 @@ class StroeController extends Controller
             $stores = Store::findOrFail($id);
             $stores->name = $request->get('name');
             $stores->count = $request->get('count');
-            // $stores->supplier_id = $request->get('supplier_id');
+            $stores->supplier_id = $request->get('supplier_id');
 
 
             $isUpdate = $stores->save();

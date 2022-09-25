@@ -6,6 +6,7 @@ use App\Models\Doctor;
 // use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use PhpParser\Comment\Doc;
 
 // use Spatie\Permission\Models\Role;
@@ -52,7 +53,7 @@ class DoctorController extends Controller
         if(! $validator->fails()){
             $doctors = new Doctor();
             $doctors->email = $request->get('email');
-            $doctors->password = $request->get('password');
+            $doctors->password = Hash::make($request->get('password'));
 
             if (request()->hasFile('file')) {
 
@@ -141,7 +142,7 @@ class DoctorController extends Controller
         if(! $validator->fails()){
             $doctors = Doctor::findOrFail($id);
             $doctors->email = $request->get('email');
-            $doctors->password = $request->get('password');
+            $doctors->password = $request-> Hash::make($request->get('password'));
 
             if (request()->hasFile('file')) {
 

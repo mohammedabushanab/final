@@ -20,7 +20,7 @@
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Create Data of Author</h3>
+              <h3 class="card-title">Create Data of doctor</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -61,11 +61,11 @@
 
                 <div class="form-group col-md-4">
                   <label for="firstName">First Name</label>
-                  <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter First Name of Author">
+                  <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter First Name of doctor">
                 </div>
                  <div class="form-group col-md-4">
                   <label for="lastName">Last Name</label>
-                  <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter Last Name of Author">
+                  <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter Last Name of doctor">
                 </div>
 
                 </div>
@@ -73,16 +73,16 @@
 
  <div class="form-group col-md-4">
                   <label for="mobile">Mobile</label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile of Author">
+                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile of doctor">
                 </div>
                  <div class="form-group col-md-4">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email of Author">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email of doctor">
                 </div>
 
                  <div class="form-group col-md-4">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password of Author">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password of doctor">
                 </div>
 
 
@@ -90,7 +90,7 @@
                   <div class="row">
  <div class="form-group col-md-4">
                   <label for="date_of_birth"> Date of Birth</label>
-                  <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter First Name of Author">
+                  <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter First Name of doctor">
                 </div>
                       <div class="form-group col-md-4">
                     <label for="gender">Gender </label>
@@ -116,14 +116,14 @@
 
               </div>
                <div class="form-group col-md-12">
-                  <label for="image">Image of Author</label>
-                  <input type="file" class="form-control" name="image" id="image" placeholder="Enter Image of Author">
+                  <label for="image">Image of doctor</label>
+                  <input type="file" class="form-control" name="image" id="image" placeholder="Enter Image of doctor">
                 </div>
 
 
               {{--  <div class="form-group col-md-12">
-                <label for="file">File of Author</label>
-                <input type="file" class="form-control" name="file" id="file" placeholder="Enter File of Author">
+                <label for="file">File of doctor</label>
+                <input type="file" class="form-control" name="file" id="file" placeholder="Enter File of doctor">
               </div>  --}}
             </div>
               <!-- /.card-body -->

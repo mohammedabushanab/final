@@ -34,8 +34,8 @@
 
                 <!-- /.form-group -->
 
-                <input type="text" name="suplier_id" id="suplier_id" value="{{$id}}"
-                class="form-control form-control-solid" hidden/>
+                {{--  <input type="text" name="suplier_id" id="suplier_id" value="{{$id}}"
+                class="form-control form-control-solid" hidden/>  --}}
 
 
                   {{--  <div class="form-group col-md-12">

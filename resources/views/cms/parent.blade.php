@@ -46,7 +46,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{{ route('home') }}" class="nav-link"></a>
       </li>
     </ul>
 
@@ -176,11 +176,37 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          {{--  <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">  --}}
         </div>
+
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
+            {{--  <a href="#" class="d-block"> {{ auth('admin')->user()->full_name }}</a>  --}}
+              @if (Auth::guard('admin')->id())
+              @if (auth('admin')->user()->images !='')
+              <img class="brand-image img-circle elevation-3" src="{{ asset('images/admins/' . auth('admin')->user()->images) }}"alt="User Image">
+              @else
+              <img class="brand-image img-circle elevation-3" src="{{ asset('images/userSolid.png') }}"alt="User Image">
+
+              @endif
+
+              {{--  @elseif (Auth::guard('doctor')->id())
+              @if (auth('doctor')->user()->images !='')
+              <img src="{{ asset('images/doctor/'.auth('doctor')->user()->images) }}" class="brand-image img-circle elevation-3" alt="User Image">
+              @else
+              <img class="brand-image img-circle elevation-3" src="{{ asset('images/userSolid.png') }}"alt="User Image">
+              @endif  --}}
+
+
+
+
+
+              @else
+              <img class="brand-image img-circle elevation-3" src="{{ asset('images/userSolid.png') }}"alt="User Image">
+
+              @endif
+            {{-- <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" --}}
+
+          </div>
       </div>
 
       <!-- SidebarSearch Form -->
@@ -201,7 +227,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+
+            <a href="{{ route('home') }}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -549,53 +576,18 @@
 
             </ul>
           </li>
-          <li class="nav-header">Settings</li>
+          {{--  <li class="nav-header">Settings</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-edit text-info"></i>
               <p class="text">edit Profile</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-key text-success"></i>
-              <p>Change Password</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('view.logout')}}" class="nav-link">
-              <i class="fas fa-sign-out-alt text-danger"></i>
-              <p>LogOut</p>
-            </a>
-          </li>
+          </li>  --}}
 
- {{--  <li class="nav-item">  --}}
-            {{--  <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-globe-americas"></i>
-              <p>
-                Article
-                <i class="fas fa-angle-left right"></i>
 
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('articles.index') }}" class="nav-link">
-                  <i class="fas fa-list-alt nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('articles.create') }}" class="nav-link">
-                  <i class="fas fa-plus-circle nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
 
-          <li class="nav-header">Websit Mangment</li>
+          {{--  <li class="nav-header">Websit Mangment</li>
 
           <li class="nav-item">
 
@@ -661,30 +653,41 @@
               </li>
 
           </ul>
-        </li>
+        </li>  --}}
 
           <li class="nav-header">Setting</li>
+          @if (Auth::guard('admin')->id())
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-edit"></i>
+            <a href="{{ route('cms.auth.profile-edit') }}" class="nav-link">
+                <i class="nav-icon fas fa-user-edit text-info"></i>
+                <p>  edit Profile</p>
+            </a>
+          </li>
+          @elseif (Auth::guard('doctor')->id())
+          <li class="nav-item">
+            <a href="{{ route('doctor_edit') }}" class="nav-link">
+                <i class="nav-icon fas fa-user-edit text-info"></i>
+              <p>  edit Profile</p>
+            </a>
+          </li>
+        @endif
 
-              <p class="text">Edit Profile</p>
+        @if (Auth::guard('admin')->id())
+        <li class="nav-item">
+            <a href="{{ route('cms.admin.edit-password') }}" class="nav-link">
+                <i class="nav-icon fas fa-key"></i>
+                <p>Change Password</p>
             </a>
           </li>
+          @endif
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-key"></i>
-              <p>Change Password</p>
+            <a href="{{ route('view.logout')}}" class="nav-link">
+              <i class="fas fa-sign-out-alt text-danger"></i>
+              <p>LogOut</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('view.logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-               <i class="fas fa-sign-out-alt"></i>
-                    <p>Logout</p>
-            </a>
-          </li>
-        </ul>  --}}
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -702,8 +705,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">@yield('sub-title')</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}"></a></li>
+                <li class="breadcrumb-item active"> @yield('active title')</li>
+                <li class="breadcrumb-item active">@yield('sub-title')</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

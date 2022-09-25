@@ -8,6 +8,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -184,11 +185,23 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Admin $admin)
     {
         // $this->authorize('delete' , Admin::class);
 
-        $admins = Admin::destroy($id);
+
+        if ($admin->id == Auth::id()){
+            return redirect()->route('admins.index')
+            ->withErrors(trans('cannot delete yourself'));
+        }
+        else {
+            $admin->user()->delete();
+            $isDeleted = $admin->delete();
+            $this->authorize('delete' , Admin::class);
+
+                return response()->json(['icon' => 'success', 'title' => 'admin deleted successfully'], $isDeleted ? 200 : 400);
+            }
+        // $admins = Admin::destroy($id);
 
     }
 }

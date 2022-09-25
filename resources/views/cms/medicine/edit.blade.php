@@ -34,7 +34,7 @@
 
                 <!-- /.form-group -->
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4" hidden>
                     <label for="doctor_id"> doctor Name</label>
                     <select class="form-control" name="doctor_id" style="width: 100%;"
                         id="doctor_id" aria-label=".form-select-sm example">
@@ -63,7 +63,16 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-4">
+                    <label for="store_id"> medicine Name</label>
+                    <select class="form-control" name="store_id" style="width: 100%;"
+                        id="store_id" aria-label=".form-select-sm example">
+                        @foreach ($stores as $store )
+                            <option value="{{ $store->id }}" >{{ $store->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-12" hidden>
                   <label for="name">medicine Name</label>
                   <input type="text" class="form-control" name="name" id="name"
                   value="{{$medicines->name}}" placeholder="Enter Name of medicine">

@@ -59,16 +59,16 @@
                     <td>{{ $sales->user ? $sales->user->status : "Null" }}</td>
 
                     <td> --}}
-                    
+
                 <td>
                         <div class="btn-group">
-                            <a href="{{route('sales.edit' , $sale->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            {{--  <a href="{{route('sales.edit' , $sale->id)}}" type="button" class="btn btn-primary">Edit</a>  --}}
                             <a href="#" onclick="performDestroy({{$sale->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
                             {{-- <button type="button" class="btn btn-success">View</button> --}}
                           </div>
                         </td>
-                        </tr>              
+                        </tr>
                           @endforeach
 
 
