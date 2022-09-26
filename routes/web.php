@@ -13,10 +13,9 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserAuthController;
-<<<<<<< HEAD
 use App\Http\Controllers\Website\IndexController;
-=======
->>>>>>> e6d2591e0718d8157096bafd5260ba845cf01f5a
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +29,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
  Route::get('/temp', function () {
      return view('website.thankyou');
  });
@@ -39,19 +37,18 @@ Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
     route::get('{guard}/register' , [RegisterController::class, 'register'])->name('view.register');
     Route::Post('{guard}/confirm' , [RegisterController::class ,'storeRegister']);
-=======
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::prefix('cms/')->group(function(){
+Route::prefix('cms/')->middleware('auth:admin,doctor')->group(function(){
     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
 
 
 
->>>>>>> e6d2591e0718d8157096bafd5260ba845cf01f5a
 });
-Route::prefix('cms/admin')->group(function(){
+Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('password/edit' , [SettingController::class , 'editPassword'])->name('cms.admin.edit-password');
@@ -112,7 +109,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
 
     Route::resource('medicines' , MedicineController::class);
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
-<<<<<<< HEAD
+
 });
 
 Route::prefix('/home')->group(function() {
@@ -128,6 +125,4 @@ Route::prefix('/home')->group(function() {
     Route::get('cart' , [IndexController::class , 'cart'])->name('website.cart');
 
     });
-=======
 });
->>>>>>> e6d2591e0718d8157096bafd5260ba845cf01f5a

@@ -124,13 +124,13 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="input-group">
 										<input class="form-control" type="password" placeholder="Password" id="password" name="password">
 									</div>
-                                    <div class="input-group">
+                                    {{-- <div class="input-group">
                                         <div></div>
                                         <div class="form-control">
                                             <input type="file" placeholder="Choose File" class="custom-file-input" id="image" name="image">
                                             <label class="custom-file-label" for="customFile">Choose image</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                        <label for="date_of_birth"> Date of Birth</label>
@@ -274,7 +274,7 @@ License: You must have a valid license purchased only from themeforest(the above
     formData.append('email',document.getElementById('email').value);
     formData.append('password',document.getElementById('password').value);
     formData.append('date_of_birth',document.getElementById('date_of_birth').value);
-    formData.append('image',document.getElementById('image').files[0]);
+    // formData.append('image',document.getElementById('image').files[0]);
         formData.append('email' , document.getElementById('email').value);
 
         store('/cms/admin/confirm',formData);

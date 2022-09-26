@@ -29,15 +29,15 @@ public function storeRegister(Request $request)
         if($isSaved){
             $users = new User();
 
-             if (request()->hasFile('image')) {
+            //  if (request()->hasFile('image')) {
 
-         $image = $request->file('image');
+        //  $image = $request->file('image');
 
-                 $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+        //          $imageName = time() . 'image.' . $image->getClientOriginalExtension();
 
-                $image->move('storage/images/admin', $imageName);
+        //         $image->move('storage/images/admin', $imageName);
 
-                $users->image = $imageName;
+        //         $users->image = $imageName;
 
             //     }
             // $roles = Role::findOrFail($request->get('role_id'));
@@ -53,9 +53,11 @@ public function storeRegister(Request $request)
             // $roles = Role::findOrFail($request->get('role_id'));
             // $admins->assignRole($roles->name);
             $isSaved = $users->save();
+
+            // return ['redirect' =>route('view.login')];
             return response()->json(['icon' => 'success' , 'title' => 'Created is Seccessfully'] , 200);
 
-        }
+
 
     }
     else{

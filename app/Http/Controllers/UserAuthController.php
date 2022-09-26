@@ -105,7 +105,6 @@ class UserAuthController extends Controller
     }
 }
 
-<<<<<<< HEAD
-=======
+
 }
->>>>>>> e6d2591e0718d8157096bafd5260ba845cf01f5a
+
