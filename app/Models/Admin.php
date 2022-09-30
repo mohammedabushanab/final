@@ -15,7 +15,10 @@ class Admin extends Authenticatable
 
     }
 
-
+    public function getImagesAttribute()
+    {
+        return $this->user->image;
+    }
 
 
     public function abouts(){

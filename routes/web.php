@@ -45,7 +45,7 @@ Route::prefix('cms/admin')->group(function(){
 
 });
 
-Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
+Route::prefix('cms/admin/')->group(function(){
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
     Route::view('' , 'cms.home')->name('home');

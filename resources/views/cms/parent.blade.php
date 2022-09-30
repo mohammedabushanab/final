@@ -183,7 +183,7 @@
             {{--  <a href="#" class="d-block"> {{ auth('admin')->user()->full_name }}</a>  --}}
               @if (Auth::guard('admin')->id())
               @if (auth('admin')->user()->images !='')
-              <img class="brand-image img-circle elevation-3" src="{{ asset('images/admins/' . auth('admin')->user()->images) }}"alt="User Image">
+              <img class="brand-image img-circle elevation-3" src="{{ asset('images/admin/' . auth('admin')->user()->image) }}"alt="User Image">
               @else
               <img class="brand-image img-circle elevation-3" src="{{ asset('images/userSolid.png') }}"alt="User Image">
 
