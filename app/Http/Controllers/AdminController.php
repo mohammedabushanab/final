@@ -106,7 +106,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $admins = Admin::findOrFail($id);
+        return response()->view('cms.admin.show' , compact('admins' ));
+
     }
 
     /**
@@ -185,23 +187,36 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
         // $this->authorize('delete' , Admin::class);
 
 
-        if ($admin->id == Auth::id()){
-            return redirect()->route('admins.index')
-            ->withErrors(trans('cannot delete yourself'));
-        }
-        else {
-            $admin->user()->delete();
-            $isDeleted = $admin->delete();
-            $this->authorize('delete' , Admin::class);
+        // if ($admin->id == Auth::id()){
+        //     return redirect()->route('admins.index')
+        //     ->withErrors(trans('cannot delete yourself'));
+        // }
+        // else {
+        //     $admin->user()->delete();
+        //     $isDeleted = $admin->delete();
+        //     $this->authorize('delete' , Admin::class);
 
-                return response()->json(['icon' => 'success', 'title' => 'admin deleted successfully'], $isDeleted ? 200 : 400);
-            }
-        // $admins = Admin::destroy($id);
+        //         return response()->json(['icon' => 'success', 'title' => 'admin deleted successfully'], $isDeleted ? 200 : 400);
+        //     }
+        $admins = Admin::destroy($id);
 
+    }
+    public function indexDelete(){
+        $admins=Admin::onlyTrashed()->get();
+        return response()->view('cms.admin.soft_delete',compact('admins'));
+    }
+    public function restore($id){
+        $admins=Admin::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->route('admins.index');
+    }
+    public function forceDelete($id){
+        $admins=Admin::onlyTrashed()->findOrFail($id)->forceDelete();
+
+        // return response()->view('dashboard.admin.soft_delete',compact('admins'));
     }
 }

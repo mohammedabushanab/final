@@ -18,6 +18,7 @@
         <div class="card-header">
           {{-- <h3 class="card-title">Data of admin</h3> --}}
                 <a href="{{route('admins.create')}}" type="button" class="btn btn-success">Add New admin</a>
+                {{--  <a href="{{route('indexDelete')}}"><button type="button" class="btn btn-md btn-danger">recycle bin</button></a>  --}}
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -42,7 +43,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>image</th>
-                <th>about</th>
+                {{--  <th>about</th>  --}}
                 <th>gender</th>
                 <th>status</th>
                 <th>Setting</th>
@@ -62,9 +63,9 @@
                       <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/admin/'. $admin->user->image)}}" width="50" height="50" alt="User Image">
                    </td>
 
-                   <td><a href="{{route('indexAbout',['id'=>$admin->id])}}"
+                   {{--  <td><a href="{{route('indexAbout',['id'=>$admin->id])}}"
                     class="btn btn-info">({{$admin->abouts_count}})
-                    abouts/s</a> </td>
+                    abouts/s</a> </td>  --}}
 
                     <td>{{ $admin->user ? $admin->user->gender : "Null" }}</td>
                     <td>{{ $admin->user ? $admin->user->status : "Null" }}</td>
@@ -74,6 +75,9 @@
                         <div class="btn-group">
                             {{--  <a href="{{route('admins.edit' , $admin->id)}}" type="button" class="btn btn-primary">Edit</a>  --}}
                             <a href="#" onclick="performDestroy({{$admin->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+                            <a href="{{route('admins.show',$admin->id)}}"  type="button" class="btn btn-info">view</a>
+                            <a href="{{route('indexDelete')}}"><button type="button" class="btn btn-md btn-danger">recycle bin</button></a>
+
 
                             {{-- <button type="button" class="btn btn-success">View</button> --}}
                           </div>
@@ -88,6 +92,8 @@
         </div>
         <!-- /.card-body -->
       </div>
+      {{ $admins->links() }}
+
       <!-- /.card -->
     </div>
   </div>

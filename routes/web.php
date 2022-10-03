@@ -52,6 +52,9 @@ Route::prefix('cms/admin/')->group(function(){
 
     Route::resource('admins' , AdminController::class);
     Route::post('admins_update/{id}' , [AdminController::class , 'update'])->name('admins_update');
+    Route::get('restore/{id}' , [AdminController::class , 'restore'])->name('restore');
+    Route::delete('forceDelete/{id}' , [AdminController::class , 'forceDelete']);
+    Route::get('indexDelete' , [AdminController::class , 'indexDelete'])->name('indexDelete');
 
     Route::resource('doctors'  ,DoctorController::class );
     Route::post('doctors_update/{id}' , [DoctorController::class , 'update'])->name('doctors_update');
