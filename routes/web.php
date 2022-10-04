@@ -37,36 +37,44 @@ Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
     route::get('{guard}/register' , [RegisterController::class, 'register'])->name('view.register');
     Route::Post('{guard}/confirm' , [RegisterController::class ,'storeRegister']);
+});
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::prefix('cms/')->middleware('auth:admin,doctor')->group(function(){
-    route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
-    route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
+// Route::prefix('cms/')->middleware('auth:admin,doctor')->group(function(){
+//     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
+//     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
 
 
 
-});
+// });
 Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
+    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('doctor_edit');
     Route::get('password/edit' , [SettingController::class , 'editPassword'])->name('cms.admin.edit-password');
     Route::post('update/password', [SettingController::class, 'updatePassword'])->name('cms.auth.update-password');
 
-    route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
+    Route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
 
 });
 
 
 
 Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
+
+// Route::prefix('cms/admin/')->group(function(){
+
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
     Route::view('' , 'cms.home')->name('home');
 
     Route::resource('admins' , AdminController::class);
     Route::post('admins_update/{id}' , [AdminController::class , 'update'])->name('admins_update');
+    Route::get('restore/{id}' , [AdminController::class , 'restore'])->name('restore');
+    Route::delete('forceDelete/{id}' , [AdminController::class , 'forceDelete']);
+    Route::get('indexDelete' , [AdminController::class , 'indexDelete'])->name('indexDelete');
 
     Route::resource('doctors'  ,DoctorController::class );
     Route::post('doctors_update/{id}' , [DoctorController::class , 'update'])->name('doctors_update');
@@ -110,6 +118,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::resource('medicines' , MedicineController::class);
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
 
+
 });
 
 Route::prefix('/home')->group(function() {
@@ -125,4 +134,7 @@ Route::prefix('/home')->group(function() {
     Route::get('cart' , [IndexController::class , 'cart'])->name('website.cart');
 
     });
-});
+// });
+
+
+
