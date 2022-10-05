@@ -4,7 +4,7 @@
 
 @section('main-title' , 'Index medicinestore')
 
-@section('sub-title' , 'index medicinestore')
+@section('sub-title' , 'Index medicinestore')
 
 @section('styles')
 
@@ -17,7 +17,7 @@
       <div class="card">
         <div class="card-header">
           {{--  <h3 class="card-title">Data of medicine</h3>  --}}
-         
+
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -82,6 +82,7 @@
       <!-- /.card -->
     </div>
   </div>
+</div>
 @endsection
 
 @section('scripts')

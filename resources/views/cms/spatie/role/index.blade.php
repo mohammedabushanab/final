@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Index medicine')
+@section('title' , 'Index Role')
 
-@section('main-title' , 'Index medicine')
+@section('main-title' , 'Index Role')
 
-@section('sub-title' , 'index medicine')
+@section('sub-title' , 'index Role')
 
 @section('styles')
 
@@ -16,10 +16,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          {{--  <h3 class="card-title">Data of medicine</h3>  --}}
+          {{-- <h3 class="card-title">Data of Role</h3> --}}
+                <a href="{{route('roles.create')}}" type="button" class="btn btn-success">Add New Role</a>
 
           <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
             <div class="input-group input-group-sm" style="width: 150px;">
               <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -37,34 +37,33 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>medicine Name</th>
-                <th>image</th>
-                <th>code</th>
-                <th>ExpirationDate</th>
-                <th>Description</th>
+                <th>Role Name</th>
+                <th>Guard Name</th>
+                <th>Permissions </th>
 
                 <th>Setting</th>
               </tr>
             </thead>
             <tbody>
 
-                @foreach ( $medicines as $medicine )
+                @foreach ( $roles as $role )
                 <tr>
-                    <td>{{ $medicine->id }}</td>
-                    <td>{{ $medicine->name }}</td>
+                    <td>{{ $role->id }}</td>
+                    <td>{{ $role->name }}</td>
+                    <td>{{ $role->guard_name }}</td>
                     <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" width="50" height="50" alt="User Image">
-                     </td>
-                    <td>{{ $medicine->ExpirationDate }}</td>
-                    <td>{{ $medicine->code }}</td>
-                    <td>{{ $medicine->description }}</td>
-
-
+                        <a href="{{ route('roles.permissions.index' , $role->id)}}"
+                          class="btn btn-primary"> Permissions ({{ $role->permissions_count }})
+                        </a>
+                      </td>
+                      <td>
                     <td>
+
                         <div class="btn-group">
-                            <a href="{{route('medicines.edit' , $medicine->id)}}" type="button" class="btn btn-primary">Edit</a>
-                            <a href="#" onclick="performDestroy({{$medicine->id}} , this)" type="button" class="btn btn-danger">Delete</a>
+                            <a href="{{route('roles.edit' , $role->id)}}" type="button" class="btn btn-primary">Edit</a>
+                            <a href="#" onclick="performDestroy({{$role->id}} , this)" type="button" class="btn btn-danger">Delete</a>
 
+                            {{-- <button type="button" class="btn btn-success">View</button> --}}
                           </div>
                     </td>
                   </tr>
@@ -76,13 +75,12 @@
           </table>
         </div>
 
-        {{ $medicines->links() }}
+        {{ $roles->links() }}
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
     </div>
   </div>
-</div>
 @endsection
 
 @section('scripts')
@@ -96,7 +94,7 @@
 
 <script>
   function performDestroy(id , reference){
-    let url = '/cms/admin/medicines/'+id;
+    let url = '/cms/admin/roles/'+id;
     confirmDestroy(url,reference);
   }
 </script>

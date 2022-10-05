@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sale;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
-class SaleController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::all();
-        $this->authorize('viewAny', Sale::class);
-
-        return response()->view('cms.sale.index', compact('sales'));
+        $permissions = Permission::orderBy('id', 'desc')->paginate(5);
+        return response()->view('cms.spatie.permission.index', compact('permissions'));
     }
 
     /**
@@ -27,8 +25,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $sales = Sale::all();
-        return response()->view('cms.sale.create', compact('sales'));
+        return response()->view('cms.spatie.permission.create');
     }
 
     /**
@@ -40,16 +37,18 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $validator = validator($request->all(), []);
+
         if (!$validator->fails()) {
-            $sales = new Sale();
-            $sales->price = $request->get('price');
-            $sales->date = $request->get('date');
-            $isSaved = $sales->save();
+            $permissions = new Permission();
+            $permissions->guard_name = $request->get('guard_name');
+            $permissions->name = $request->get('name');
+
+            $isSaved = $permissions->save();
             if ($isSaved) {
-                return response()->json(['icon' => 'success', 'title' => 'Created is Successfully'], 200);
+                return response()->json(['icon' => 'success', 'title' => 'Created is successfully'], 200);
             }
         } else {
-            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+            return response()->json(['icon' => 'error', 'title' => $validator]);
         }
     }
 
@@ -61,7 +60,8 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-        //
+        $permissions = Permission::findOrFail($id);
+        return response()->view('cms.spatie.permission.show', compact('permissions'));
     }
 
     /**
@@ -72,8 +72,8 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        $sales = Sale::findOrFail($id);
-        return response()->view('cms.sale.edit', compact('sales'));
+        $permissions = permission::findOrFail($id);
+        return response()->view('cms.spatie.permission.edit', compact('permissions'));
     }
 
     /**
@@ -86,17 +86,19 @@ class SaleController extends Controller
     public function update(Request $request, $id)
     {
         $validator = validator($request->all(), []);
+
         if (!$validator->fails()) {
-            $sales = Sale::findOrFail($id);
-            $sales->price = $request->get('price');
-            $sales->date = $request->get('date');
-            $isUpdate = $sales->save();
-            return ['redirect' => route('sales.index')];
+            $permissions = Permission::findOrFail($id);
+            $permissions->guard_name = $request->get('guard_name');
+            $permissions->name = $request->get('name');
+
+            $isUpdate = $permissions->save();
+            return ['redirect' => route('permissions.index')];
             if ($isUpdate) {
-                return response()->json(['icon' => 'success', 'title' => 'Updated is Successfully'], 200);
+                return response()->json(['icon' => 'success', 'title' => 'Update is successfully'], 200);
             }
         } else {
-            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+            return response()->json(['icon' => 'error', 'title' => $validator]);
         }
     }
 
@@ -108,6 +110,6 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        $sales = Sale::destroy($id);
+        $permissions = Permission::destroy($id);
     }
 }

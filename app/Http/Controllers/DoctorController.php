@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Comment\Doc;
+use Spatie\Permission\Models\Role;
 
 // use Spatie\Permission\Models\Role;
 
@@ -21,8 +22,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('user')->withCount('medicines')->orderBy('id' , 'desc')->get();
-        return response()->view('cms.doctor.index' , compact('doctors'));
+        $doctors = Doctor::with('user')->withCount('medicines')->orderBy('id', 'desc')->get();
+        return response()->view('cms.doctor.index', compact('doctors'));
     }
 
     /**
@@ -33,9 +34,9 @@ class DoctorController extends Controller
     public function create()
     {
         $doctors = Doctor::all();
-        // $roles = Role::where('guard_name' , 'author')->get();
+        $roles = Role::where('guard_name', 'author')->get();
 
-        return response()->view('cms.doctor.create' , compact('doctors'));
+        return response()->view('cms.doctor.create', compact('doctors', 'roles'));
     }
 
     /**
@@ -46,11 +47,9 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator($request->all() , [
+        $validator = validator($request->all(), []);
 
-        ]);
-
-        if(! $validator->fails()){
+        if (!$validator->fails()) {
             $doctors = new Doctor();
             $doctors->email = $request->get('email');
             $doctors->password = Hash::make($request->get('password'));
@@ -64,11 +63,10 @@ class DoctorController extends Controller
                 $file->move('storage/files/doctor', $fileName);
 
                 $doctors->file = $fileName;
-
-                }
+            }
 
             $isSaved = $doctors->save();
-            if($isSaved){
+            if ($isSaved) {
                 $users = new User();
 
                 if (request()->hasFile('image')) {
@@ -80,8 +78,7 @@ class DoctorController extends Controller
                     $image->move('storage/images/doctor', $imageName);
 
                     $users->image = $imageName;
-
-                    }
+                }
                 // $roles = Role::findOrFail($request->get('role_id'));
                 // $doctors->assignRole($roles->name);
                 $users->firstName = $request->get('firstName');
@@ -93,11 +90,10 @@ class DoctorController extends Controller
                 $users->actor()->associate($doctors);
 
                 $isSaved = $users->save();
-                return response()->json(['icon' => 'success' , 'title'=> 'Created is Successfully'] , 200);
-             }
-        }
-        else{
-            return response()->json(['icon'=> 'error' , 'title' => $validator->getMessageBag()->first() ] , 400);
+                return response()->json(['icon' => 'success', 'title' => 'Created is Successfully'], 200);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
 
@@ -122,7 +118,7 @@ class DoctorController extends Controller
     {
         // $doctors = Doctor::all();
         $doctors = Doctor::findOrFail($id);
-        return response()->view('cms.doctor.edit' , compact('doctors'));
+        return response()->view('cms.doctor.edit', compact('doctors'));
     }
 
     /**
@@ -134,15 +130,15 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = validator($request->all() , [
-            'image'=>"required|image|max:2048|mimes:png,jpg,jpeg,pdf",
+        $validator = validator($request->all(), [
+            'image' => "required|image|max:2048|mimes:png,jpg,jpeg,pdf",
 
         ]);
 
-        if(! $validator->fails()){
+        if (!$validator->fails()) {
             $doctors = Doctor::findOrFail($id);
             $doctors->email = $request->get('email');
-            $doctors->password = $request-> Hash::make($request->get('password'));
+            $doctors->password = $request->Hash::make($request->get('password'));
 
             if (request()->hasFile('file')) {
 
@@ -153,11 +149,10 @@ class DoctorController extends Controller
                 $file->move('storage/files/doctor', $fileName);
 
                 $doctors->file = $fileName;
-
-                }
+            }
 
             $isUpdate = $doctors->save();
-            if($isUpdate){
+            if ($isUpdate) {
                 $users = $doctors->user;
 
                 if (request()->hasFile('image')) {
@@ -169,8 +164,7 @@ class DoctorController extends Controller
                     $image->move('storage/images/doctor', $imageName);
 
                     $users->image = $imageName;
-
-                    }
+                }
 
                 $users->firstName = $request->get('firstName');
                 $users->lastName = $request->get('lastName');
@@ -183,11 +177,10 @@ class DoctorController extends Controller
                 $isUpdate = $users->save();
 
                 return ['redirect' => route('doctors.index')];
-                return response()->json(['icon' => 'success' , 'title'=> 'Updates is Successfully'] , 200);
-             }
-        }
-        else{
-            return response()->json(['icon'=> 'error' , 'title' => $validator->getMessageBag()->first() ] , 400);
+                return response()->json(['icon' => 'success', 'title' => 'Updates is Successfully'], 200);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
 

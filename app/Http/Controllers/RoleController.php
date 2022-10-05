@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sale;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
-class SaleController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::all();
-        $this->authorize('viewAny', Sale::class);
-
-        return response()->view('cms.sale.index', compact('sales'));
+        $roles = Role::withCount('permissions')->orderBy('id', 'asc')->paginate(5);
+        return response()->view('cms.spatie.role.index', compact('roles'));
     }
 
     /**
@@ -27,8 +25,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $sales = Sale::all();
-        return response()->view('cms.sale.create', compact('sales'));
+        return response()->view('cms.spatie.role.create');
     }
 
     /**
@@ -40,16 +37,18 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $validator = validator($request->all(), []);
+
         if (!$validator->fails()) {
-            $sales = new Sale();
-            $sales->price = $request->get('price');
-            $sales->date = $request->get('date');
-            $isSaved = $sales->save();
+            $roles = new Role();
+            $roles->guard_name = $request->get('guard_name');
+            $roles->name = $request->get('name');
+
+            $isSaved = $roles->save();
             if ($isSaved) {
-                return response()->json(['icon' => 'success', 'title' => 'Created is Successfully'], 200);
+                return response()->json(['icon' => 'success', 'title' => 'Created is successfully'], 200);
             }
         } else {
-            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+            return response()->json(['icon' => 'error', 'title' => $validator]);
         }
     }
 
@@ -61,7 +60,8 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-        //
+        $roles = Role::findOrFail($id);
+        return response()->view('cms.spatie.role.show', compact('roles'));
     }
 
     /**
@@ -72,8 +72,8 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        $sales = Sale::findOrFail($id);
-        return response()->view('cms.sale.edit', compact('sales'));
+        $roles = Role::findOrFail($id);
+        return response()->view('cms.spatie.role.edit', compact($roles));
     }
 
     /**
@@ -86,17 +86,19 @@ class SaleController extends Controller
     public function update(Request $request, $id)
     {
         $validator = validator($request->all(), []);
+
         if (!$validator->fails()) {
-            $sales = Sale::findOrFail($id);
-            $sales->price = $request->get('price');
-            $sales->date = $request->get('date');
-            $isUpdate = $sales->save();
-            return ['redirect' => route('sales.index')];
+            $roles = Role::findOrFail($id);
+            $roles->guard_name = $request->get('guard_name');
+            $roles->name = $request->get('name');
+
+            $isUpdate = $roles->save();
+            return ['redirect' => route('roles.index')];
             if ($isUpdate) {
-                return response()->json(['icon' => 'success', 'title' => 'Updated is Successfully'], 200);
+                return response()->json(['icon' => 'success', 'title' => 'Update is successfully'], 200);
             }
         } else {
-            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+            return response()->json(['icon' => 'error', 'title' => $validator]);
         }
     }
 
@@ -108,6 +110,6 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        $sales = Sale::destroy($id);
+        $roles = Role::destroy($id);
     }
 }

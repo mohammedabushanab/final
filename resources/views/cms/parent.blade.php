@@ -179,7 +179,7 @@
           {{--  <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">  --}}
         </div>
 
-        
+
       </div>
 
       <!-- SidebarSearch Form -->
@@ -210,7 +210,7 @@
 
           </li>
 
-          {{--  <li class="nav-header">Roles & Permission</li>
+          <li class="nav-header">Roles & Permission</li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -235,9 +235,9 @@
               </li>
 
             </ul>
-          </li>  --}}
+          </li>
 
-           {{--  <li class="nav-item">
+           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -260,9 +260,11 @@
               </li>
 
             </ul>
-          </li>  --}}
+          </li>
 
             <li class="nav-header">User Mangment</li>
+
+         {{--  @canAny(['Index-Admin' , 'Create-Admin'])  --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -272,22 +274,29 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                {{--  @can('Index-Admin')  --}}
               <li class="nav-item">
                 <a href="{{ route('admins.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              {{--  @endcan  --}}
+              {{--  @can('Create-Admin')  --}}
               <li class="nav-item">
                 <a href="{{ route('admins.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              {{--  @endcan  --}}
 
             </ul>
           </li>
+          {{--  @endcan  --}}
 
+
+         @canAny(['Index-Doctor' , 'Create-Doctor'])
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -297,21 +306,29 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Doctor')
               <li class="nav-item">
                 <a href="{{ route('doctors.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+              @can('Create-Doctor')
               <li class="nav-item">
                 <a href="{{ route('doctors.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              @endcan
 
             </ul>
           </li>
+              @endcan
+
+
+         @canAny(['Index-Supplier' , 'Create-Supplier'])
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -321,21 +338,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Supplier')
               <li class="nav-item">
                 <a href="{{ route('suppliers.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+              @can('Create-Supplier')
               <li class="nav-item">
                 <a href="{{ route('suppliers.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              @endcan
 
             </ul>
           </li>
+          @endcan
+
+        @canAny(['Index-Customer' , 'Create-Customer'])
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -345,21 +369,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Customer')
               <li class="nav-item">
                 <a href="{{ route('customers.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+              @can('Create-Cutomer')
               <li class="nav-item">
                 <a href="{{ route('customers.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+             @endcan
 
             </ul>
           </li>
+          @endcan
+
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-globe-americas"></i>
@@ -388,6 +419,7 @@
 
 
 
+          @canAny(['Index-Stores'])
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -399,12 +431,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Stores')
               <li class="nav-item">
                 <a href="{{ route('stores.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+                @endcan
               {{--  <li class="nav-item">
                 <a href="{{ route('medicines.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
@@ -414,6 +448,7 @@
 
             </ul>
           </li>
+          @endcan
 
 
 
@@ -428,12 +463,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-About')
               <li class="nav-item">
                 <a href="{{ route('abouts.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+                @endcan
               {{--  <li class="nav-item">
                 <a href="{{ route('abouts.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
@@ -498,6 +535,7 @@
           </li>  --}}
 
           <li class="nav-header">Content Mangment</li>
+          @canAny(['Index-Category' , 'Create-Category'])
             <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-globe-americas"></i>
@@ -508,21 +546,27 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Category')
               <li class="nav-item">
                 <a href="{{ route('categories.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+              @can('Create-Category')
               <li class="nav-item">
                 <a href="{{ route('categories.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              @endcan
 
             </ul>
           </li>
+          @endcan
+          @canAny(['Index-Sale' , 'Create-Sale'])
 
             <li class="nav-item">
             <a href="#" class="nav-link">
@@ -534,21 +578,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @can('Index-Sale')
               <li class="nav-item">
                 <a href="{{ route('sales.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+              @can('Create-Sale')
               <li class="nav-item">
                 <a href="{{ route('sales.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              @endcan
 
             </ul>
           </li>
+          @endcan
           {{--  <li class="nav-header">Settings</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
