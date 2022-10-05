@@ -56,11 +56,14 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-md-12" >
+                <div class="form-group col-md-6" >
 
                   <label for="name">medicine Name</label>
-                  <input type="text" class="form-control" name="code" id="code" placeholder="Enter code of medicine">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter name of medicine">
+                  <label for="code">medicine code</label>
+                  <input type="text" class="form-control" name="code" id="code" placeholder="Enter name of medicine">
                 </div>
+
                 <div class="form-group col-md-12">
                   <label for="ExpirationDate">medicine ExpirationDate</label>
                   <input type="text" class="form-control" name="ExpirationDate" id="ExpirationDate" placeholder="Enter ExpirationDate of medicine">

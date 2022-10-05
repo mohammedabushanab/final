@@ -35,36 +35,38 @@
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="c_fname">
+                    <label for="first_name" class="text-black">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="first_name" name="first_name">
                   </div>
                   <div class="col-md-6">
-                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
+                    <label for="last_name" class="text-black">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="last_name" name="last_name">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+                    <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_subject" class="text-black">Subject </label>
-                    <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <label for="Subject" class="text-black">Subject </label>
+                    <input type="text" class="form-control" id="Subject" name="Subject">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_message" class="text-black">Message </label>
-                    <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                    <label for="message" class="text-black">Message </label>
+                    <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+                    {{--  <a href="{{route('medicines.index')}}" type="button" class="btn btn-success">Return Back</a>  --}}
+
+                    <input type="button" onclick="performStore()" class="btn btn-primary btn-lg btn-block" value="Send Message" >
                   </div>
                 </div>
               </div>
@@ -107,6 +109,27 @@
     </div>
     @endsection
     @section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="{{asset('cms/plugins/toastr/toastr.min.js')}}"></script>
+
+<script src="{{asset('cms/js/crud.js')}}"></script>
+
+<script>
+    function performStore(){
+      let formData = new FormData();
+      formData.append('first_name',document.getElementById('first_name').value);
+      formData.append('last_name',document.getElementById('last_name').value);
+       formData.append('Subject',document.getElementById('Subject').value);
+      formData.append('email',document.getElementById('email').value);
+      formData.append('message',document.getElementById('message').value);
+      store('/home/contact' ,formData );
+
+
+    }
+  </script>
     @endsection
 
 

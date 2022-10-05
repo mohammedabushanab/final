@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
@@ -118,6 +119,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::resource('medicines' , MedicineController::class);
     Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
 
+    Route::resource('contacts' , ContactController::class);
 
 });
 
@@ -128,6 +130,8 @@ Route::prefix('/home')->group(function() {
     Route::get('aboutUs' , [IndexController::class , 'about'])->name('website.about');
     Route::get('checkout' , [IndexController::class , 'checkout'])->name('website.checkout');
     Route::get('contact' , [IndexController::class , 'contact'])->name('website.contact');
+    Route::post('contact' , [IndexController::class , 'storeContact']);
+
     Route::get('shopSingle' , [IndexController::class , 'shopSingle'])->name('website.shopsingle');
     Route::get('shop' , [IndexController::class , 'shop'])->name('website.shop');
     Route::get('thankyou' , [IndexController::class , 'thank'])->name('website.thankyou');
@@ -135,6 +139,3 @@ Route::prefix('/home')->group(function() {
 
     });
 // });
-
-
-

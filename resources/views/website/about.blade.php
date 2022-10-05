@@ -25,7 +25,11 @@
 
     <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
+        @foreach ( $abouts as $about )
+
+
         <div class="row mb-5">
+
           <div class="col-md-6">
             <div class="block-16">
               <figure>
@@ -41,24 +45,25 @@
 
 
             <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">How We Started</h2>
+                <h2 class="text-black">{{ $about->title }}</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
-              cumque recusandae, laudantium minima repellendus.</p>
+            <p class="text-black">{{ $about->description }}</p>
 
           </div>
         </div>
+        @endforeach
+
       </div>
     </div>
 
 
 
-    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
+     {{--  <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
-        <div class="row mb-5">
+        @foreach ( $abouts as $about )  --}}
+
+
+        {{--  <div class="row mb-5">
           <div class="col-md-6 order-md-2">
             <div class="block-16">
               <figure>
@@ -73,18 +78,19 @@
 
 
             <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">We Are Trusted Company</h2>
+              <h2 class="text-black">{{ $about->title }}</h2>
             </div>
-            <p class="text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p class="text-black">Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
-              cumque recusandae, laudantium minima repellendus.</p>
+            <p class="text-black">{{ $about->description }}</p>
 
           </div>
         </div>
+        @endforeach
+
       </div>
-    </div>
+    </div>  --}}
+
+
+
 
     <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
       <div class="container">
