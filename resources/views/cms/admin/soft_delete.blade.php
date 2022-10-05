@@ -50,7 +50,7 @@
                   {{-- <td>{{$admin->user ? $admin->user->last_name : "Null"}}</td> --}}
                   <td>{{$admin->email}}</td>
 
-                  <td>  <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/admin/'. $admin->user->image)}}" width="60" height="60" alt="User Image"> </td>
+                  <td>  <img class="img-circle img-bordered-sm" src="{{asset('storage/images/admin/'. $admin->user->image)}}" width="60" height="60" alt="User Image"> </td>
                   {{--  <img class="img-circle img-bordered-sm" src="{{asset('storage/images/admin/'. $admin->user->image)}}" width="50" height="50" alt="User Image">  --}}
 
                   <td>

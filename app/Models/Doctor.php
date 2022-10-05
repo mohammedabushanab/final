@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class Doctor extends Model
+class Doctor extends Authenticatable
 {
     use HasFactory, HasRoles;
 
@@ -23,4 +23,9 @@ class Doctor extends Model
     {
         return $this->hasMany(Store::class);
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
 }

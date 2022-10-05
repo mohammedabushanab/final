@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											 <label class="kt-checkbox">
 												<input type="checkbox" name="remember"> Remember me
 												<span></span>
-											</label> 
+											</label>
 										</div>
 										<div class="col kt-align-right">
 											<a href="javascript:;" id="kt_login_forgot" class="kt-login__link">Forget Password ?</a>
@@ -106,17 +106,17 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 								<form class="kt-form" action="">
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Fullname" name="fullname">
+										<input class="form-control" type="text" placeholder="Fullname"  id="fullname" name="fullname">
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+										<input class="form-control" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
 									</div>
 									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Password" name="password">
+										<input class="form-control" type="password" placeholder="Password" id="password" name="password">
 									</div>
-									<div class="input-group">
+									{{-- <div class="input-group">
 										<input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
-									</div>
+									</div> --}}
 									<div class="row kt-login__extra">
 										<div class="col kt-align-left">
 											<label class="kt-checkbox">
@@ -127,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 									</div>
 									<div class="kt-login__actions">
-										<button id="kt_login_signup_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
+										<button id="kt_login_signup_submit"  onclick="register()" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
 										<button id="kt_login_signup_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
 									</div>
 								</form>
@@ -143,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<div class="kt-login__actions">
 										<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Request</button>&nbsp;&nbsp;
-										<button id="kt_login_forgot_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
+										{{-- <a href="{{ route('view.login') }}" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</a> --}}
 									</div>
 								</form>
 							</div>
@@ -152,7 +152,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									Don't have an account yet ?
 								</span>
 								&nbsp;&nbsp;
-								<a href="javascript:;" id="kt_login_signup" class="kt-login__account-link">Sign Up!</a>
+								<a href="{{ route('view.register' , $guard)}}"  class="kt-login__account-link">Sign Up!</a>
 							</div>
 						</div>
 					</div>
@@ -243,6 +243,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         }
         </script>
+
 	</body>
 
 	<!-- end::Body -->

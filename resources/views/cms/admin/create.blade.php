@@ -98,7 +98,7 @@
 
                   </div>
                   <div class="row">
- <div class="form-group col-md-4">
+                   <div class="form-group col-md-4">
                   <label for="date_of_birth"> Date of Birth</label>
                   <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter First Date of birth">
                 </div>
