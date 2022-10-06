@@ -21,10 +21,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::with('user')->withCount('abouts')->orderBy('id' , 'desc')->simplePaginate(7);
+        $admins = Admin::with('user')->withCount('abouts')->orderBy('id', 'desc')->simplePaginate(7);
         // $this->authorize('viewAny' , Admin::class);
 
-        return response()->view('cms.admin.index' , compact('admins'));
+        return response()->view('cms.admin.index', compact('admins'));
     }
 
     /**
@@ -35,10 +35,10 @@ class AdminController extends Controller
     public function create()
     {
         $admins = Admin::all();
-        // $roles = Role::where('guard_name' , 'admin')->get();
-        // $this->authorize('create' , Admin::class);
+        $roles = Role::where('guard_name', 'admin')->get();
+        $this->authorize('create', Admin::class);
 
-        return response()->view('cms.admin.create ' , compact('admins'));
+        return response()->view('cms.admin.create ', compact('admins', 'roles'));
     }
 
     /**
@@ -49,19 +49,17 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator($request->all() , [
+        $validator = Validator($request->all(), [
             'firstName' => 'required|string|min:3|max:20',
-        ] , [
-
-        ]);
-        if( ! $validator->fails()){
+        ], []);
+        if (!$validator->fails()) {
             $admins = new Admin();
             $admins->email = $request->get('email');
             $admins->password = Hash::make($request->get('password'));
 
             $isSaved = $admins->save();
 
-            if($isSaved){
+            if ($isSaved) {
                 $users = new User();
 
                 if (request()->hasFile('image')) {
@@ -73,10 +71,9 @@ class AdminController extends Controller
                     $image->move('storage/images/admin', $imageName);
 
                     $users->image = $imageName;
-
-                    }
-                // $roles = Role::findOrFail($request->get('role_id'));
-                // $admins->assignRole($roles->name);
+                }
+                $roles = Role::findOrFail($request->get('role_id'));
+                $admins->assignRole($roles->name);
                 $users->firstName = $request->get('firstName');
                 $users->lastName = $request->get('lastName');
                 $users->mobile = $request->get('mobile');
@@ -88,13 +85,10 @@ class AdminController extends Controller
                 // $roles = Role::findOrFail($request->get('role_id'));
                 // $admins->assignRole($roles->name);
                 $isSaved = $users->save();
-                return response()->json(['icon' => 'success' , 'title' => 'Created is Seccessfully'] , 200);
-
+                return response()->json(['icon' => 'success', 'title' => 'Created is Seccessfully'], 200);
             }
-
-        }
-        else{
-            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
 
@@ -107,8 +101,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $admins = Admin::findOrFail($id);
-        return response()->view('cms.admin.show' , compact('admins' ));
-
+        return response()->view('cms.admin.show', compact('admins'));
     }
 
     /**
@@ -123,7 +116,7 @@ class AdminController extends Controller
         $admins = Admin::findOrFail($id);
         // $this->authorize('update' , Admin::class);
 
-        return response()->view('cms.admin.edit' , compact('admins'));
+        return response()->view('cms.admin.edit', compact('admins'));
     }
 
     /**
@@ -135,17 +128,15 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator($request->all() ,[
+        $validator = Validator($request->all(), []);
 
-        ]);
-
-        if( ! $validator->fails()){
+        if (!$validator->fails()) {
             $admins = Admin::findOrFail($id);
             $admins->email = $request->get('email');
             $admins->password = $request->get('password');
 
             $isUpdate = $admins->save();
-            if($isUpdate){
+            if ($isUpdate) {
                 $users = $admins->user;
 
                 if (request()->hasFile('image')) {
@@ -157,8 +148,7 @@ class AdminController extends Controller
                     $image->move('storage/images/admin', $imageName);
 
                     $users->image = $imageName;
-
-                    }
+                }
 
                 $users->firstName = $request->get('firstName');
                 $users->lastName = $request->get('lastName');
@@ -171,13 +161,12 @@ class AdminController extends Controller
 
                 $isUpdate = $users->save();
 
-                return ['redirect' =>route('admins.index')];
+                return ['redirect' => route('admins.index')];
 
-               return response()->json(['icon' =>'success' , 'title' => 'Updated is Successfully'] , 200);
+                return response()->json(['icon' => 'success', 'title' => 'Updated is Successfully'], 200);
             }
-        }
-        else{
-            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
 
@@ -204,18 +193,20 @@ class AdminController extends Controller
         //         return response()->json(['icon' => 'success', 'title' => 'admin deleted successfully'], $isDeleted ? 200 : 400);
         //     }
         $admins = Admin::destroy($id);
-
     }
-    public function indexDelete(){
-        $admins=Admin::onlyTrashed()->get();
-        return response()->view('cms.admin.soft_delete',compact('admins'));
+    public function indexDelete()
+    {
+        $admins = Admin::onlyTrashed()->get();
+        return response()->view('cms.admin.soft_delete', compact('admins'));
     }
-    public function restore($id){
-        $admins=Admin::onlyTrashed()->findOrFail($id)->restore();
+    public function restore($id)
+    {
+        $admins = Admin::onlyTrashed()->findOrFail($id)->restore();
         return redirect()->route('admins.index');
     }
-    public function forceDelete($id){
-        $admins=Admin::onlyTrashed()->findOrFail($id)->forceDelete();
+    public function forceDelete($id)
+    {
+        $admins = Admin::onlyTrashed()->findOrFail($id)->forceDelete();
 
         // return response()->view('dashboard.admin.soft_delete',compact('admins'));
     }

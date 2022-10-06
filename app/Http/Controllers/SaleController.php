@@ -14,8 +14,10 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales=Sale::all();
-        return response()->view('cms.sale.index' , compact('sales'));
+        $sales = Sale::all();
+        $this->authorize('viewAny', Sale::class);
+
+        return response()->view('cms.sale.index', compact('sales'));
     }
 
     /**
@@ -25,6 +27,11 @@ class SaleController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
+=======
+        $sales = Sale::all();
+        return response()->view('cms.sale.create', compact('sales'));
+>>>>>>> 985e6efd94932cf61157e76d0d0f61ea5b7c3b93
     }
 
     /**
@@ -35,6 +42,7 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $validator = validator($request->all() , [
 
         ]);
@@ -49,6 +57,19 @@ class SaleController extends Controller
         }
         else{
             return response()->json(['icon'=>'error' , 'title'=>$validator->getMessageBag()->first()],400);
+=======
+        $validator = validator($request->all(), []);
+        if (!$validator->fails()) {
+            $sales = new Sale();
+            $sales->price = $request->get('price');
+            $sales->date = $request->get('date');
+            $isSaved = $sales->save();
+            if ($isSaved) {
+                return response()->json(['icon' => 'success', 'title' => 'Created is Successfully'], 200);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+>>>>>>> 985e6efd94932cf61157e76d0d0f61ea5b7c3b93
         }
     }
 
@@ -71,7 +92,12 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
 
+=======
+        $sales = Sale::findOrFail($id);
+        return response()->view('cms.sale.edit', compact('sales'));
+>>>>>>> 985e6efd94932cf61157e76d0d0f61ea5b7c3b93
     }
 
     /**
@@ -83,7 +109,23 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
 
+=======
+        $validator = validator($request->all(), []);
+        if (!$validator->fails()) {
+            $sales = Sale::findOrFail($id);
+            $sales->price = $request->get('price');
+            $sales->date = $request->get('date');
+            $isUpdate = $sales->save();
+            return ['redirect' => route('sales.index')];
+            if ($isUpdate) {
+                return response()->json(['icon' => 'success', 'title' => 'Updated is Successfully'], 200);
+            }
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
+>>>>>>> 985e6efd94932cf61157e76d0d0f61ea5b7c3b93
     }
 
     /**
@@ -94,6 +136,6 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        $sales=Sale::destroy($id);
+        $sales = Sale::destroy($id);
     }
 }

@@ -57,6 +57,17 @@
                         @endforeach
                     </select>
                 </div>  --}}
+                <div class="row">
+                    	<div class="form-group col-md-12">
+	                  <label for="role_id">Role</label>
+	                  <select class="form-control select2" name="role_id"   id="role_id" style="width: 100%;" aria-label=".form-select-sm example">
+	                    @foreach ($roles as $role)
+	                     <option value="{{ $role->id}}">{{ $role->name }}                      </option>
+	                    @endforeach
+
+	                  </select>
+</div>
+                </div>
 
                 <div class="form-group col-md-4">
                   <label for="firstName">First Name</label>
@@ -154,6 +165,7 @@
     formData.append('email',document.getElementById('email').value);
     formData.append('password',document.getElementById('password').value);
     formData.append('date_of_birth',document.getElementById('date_of_birth').value);
+    formData.append('role_id',document.getElementById('role_id').value);
     formData.append('image',document.getElementById('image').files[0]);
 
     store('/cms/admin/admins' ,formData );
