@@ -25,8 +25,6 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $sales=Sale::all();
-       return response()->view('cms.sale.create' , compact('sales'));
     }
 
     /**
@@ -42,12 +40,12 @@ class SaleController extends Controller
         ]);
         if(! $validator->fails()){
             $sales= new Sale();
-            $sales->price= $request->get('price');        
-            $sales->date= $request->get('date'); 
+            $sales->price= $request->get('price');
+            $sales->date= $request->get('date');
             $isSaved=$sales->save();
             if($isSaved){
                 return response()->json(['icon' => 'success' , 'title'=> 'Created is Successfully'] , 200);
-            }       
+            }
         }
         else{
             return response()->json(['icon'=>'error' , 'title'=>$validator->getMessageBag()->first()],400);
@@ -73,8 +71,7 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        $sales =Sale::findOrFail($id);
-        return response()->view('cms.sale.edit' , compact('sales'));
+
     }
 
     /**
@@ -86,22 +83,7 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = validator($request->all() , [
 
-        ]);
-        if(! $validator->fails()){
-            $sales= Sale::findOrFail($id);
-            $sales->price= $request->get('price');        
-            $sales->date= $request->get('date'); 
-            $isUpdate=$sales->save();
-            return ['redirect' => route('sales.index')];
-            if($isUpdate){
-                return response()->json(['icon' => 'success' , 'title'=> 'Updated is Successfully'] , 200);
-            }       
-        }
-        else{
-            return response()->json(['icon'=>'error' , 'title'=>$validator->getMessageBag()->first()],400);
-        }
     }
 
     /**

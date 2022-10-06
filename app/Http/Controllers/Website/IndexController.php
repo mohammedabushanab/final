@@ -71,9 +71,13 @@ class IndexController extends Controller
 
 
     public function shopSingle(){
+        // $abouts=About::take(2)->get();
+
              return response()->view('website.shop-single');
     }
     public function shop(){
+        // $categories=Category::take(2)->get();
+
              return response()->view('website.shop');
     }
     public function thank(){

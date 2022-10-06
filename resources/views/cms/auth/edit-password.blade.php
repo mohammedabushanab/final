@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title','change password ')
+@section('title',' تغيير كلمة المرور')
 
-@section('sub-title','  change password ')
+@section('sub-title','  كلمة المرور  ')
 
-@section('active title',' change password ')
+@section('active title',' تغيير كلمة المرور  ')
 @section('styles')
 
 @endsection
@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                   <div class="card-header">
-                      <h3 class="card-title">change password</h3>
+                      <h3 class="card-title">تغيير كلمة المرور</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -33,25 +33,25 @@
 
 
                             <div class="form-group col-md-6">
-                                <label for="current_password">enter current_password</label>
+                                <label for="current_password"> أدخل كلمة المرور الحالية</label>
                                 <input type="password"  class="form-control" id="current_password"
-                                    placeholder="enter current_password">
+                                    placeholder="أدخل كلمة المرور الحالية ">
                             </div>
 
                            <div class="form-group col-md-6">
                         </div>
 
                             <div class="form-group col-md-6">
-                                <label for="new_password">enter new_password</label>
+                                <label for="new_password"> أدخل كلمة المرور الجديدة</label>
                                 <input type="password"  class="form-control" id="new_password"
-                                    placeholder="enter new_password">
+                                    placeholder="أدخل كلمة المرور الجديدة">
                             </div>
                             <div class="form-group col-md-6">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="new_password_confirmation">new_password_confirmation</label>
+                                <label for="new_password_confirmation"> تأكيد كلمة المرور</label>
                                 <input type="password" class="form-control" id="new_password_confirmation"
-                                    placeholder="new_password_confirmation ">
+                                    placeholder="تأكيد كلمة المرور الجديدة  ">
                             </div>
                             <div class="form-group col-md-6">
                             </div>
@@ -61,7 +61,7 @@
 
                       <!-- /.card-body -->
                       <div class="card-footer">
-                          <button type="button" onclick="performStore()" class="btn btn-lg btn-success">change password</button>
+                          <button type="button" onclick="performStore()" class="btn btn-lg btn-success">تغيير كلمة المرور</button>
                          {{-- <a href="{{route('cities.index')}}"><button type="button" class="btn btn-lg btn-primary"> قائمة المدن </button></a> --}}
                       </div>
                   </form>
