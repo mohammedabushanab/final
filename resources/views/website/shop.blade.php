@@ -42,6 +42,7 @@
             </div>
           </div>
         </div> -->
+
                 <div class="row">
                     <div class="col text-center my-4">
                         <h1 class="fs-2">Trending Item</h1>
@@ -49,13 +50,16 @@
                     </div>
                 </div>
 
+
                 <div class="row mt-3 mb-4 button-group filter-button-group">
+
                     <div class="col d-flex justify-content-center">
                         <button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">All</button>
-                        <button type="button" data-filter=".Vitamins" class="btn btn-primary mx-1 text-dark">Vitamins</button>
+                        <button type="button" data-filter=".Vitamins" class="btn btn-primary mx-1 text-dark"></button>
                         <button type="button" data-filter=".Supplements" class="btn btn-primary mx-1 text-dark">Supplements</button>
                         <button type="button" data-filter=".Diet" class="btn btn-primary mx-1 text-dark">Diet</button>
                     </div>
+
                 </div>
 
                 <div class="row" id="product-list">
