@@ -339,7 +339,7 @@
               @endcan
 
 
-         @canAny(['Index-Supplier' , 'Create-Supplier'])
+         {{-- @canAny(['Index-Supplier' , 'Create-Supplier']) --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -349,28 +349,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Supplier')
+                {{-- @can('Index-Supplier') --}}
               <li class="nav-item">
                 <a href="{{ route('suppliers.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-              @can('Create-Supplier')
+              {{-- @endcan --}}
+              {{-- @can('Create-Supplier') --}}
               <li class="nav-item">
                 <a href="{{ route('suppliers.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              @endcan
+              {{-- @endcan --}}
 
             </ul>
           </li>
-          @endcan
+          {{-- @endcan --}}
 
-        @canAny(['Index-Customer' , 'Create-Customer'])
+        {{-- @canAny(['Index-Customer' , 'Create-Customer']) --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -380,26 +380,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Customer')
+                {{-- @can('Index-Customer') --}}
               <li class="nav-item">
                 <a href="{{ route('customers.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-              @can('Create-Cutomer')
+              {{-- @endcan --}}
+              {{-- @can('Create-Cutomer') --}}
               <li class="nav-item">
                 <a href="{{ route('customers.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-             @endcan
+             {{-- @endcan --}}
 
             </ul>
           </li>
-          @endcan
+          {{-- @endcan --}}
 
 
           <li class="nav-item">
@@ -418,12 +418,12 @@
                   <p>Index</p>
                 </a>
               </li>
-              {{--  <li class="nav-item">
+               <li class="nav-item">
                 <a href="{{ route('medicines.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
-              </li>  --}}
+              </li>
 
             </ul>
           </li>

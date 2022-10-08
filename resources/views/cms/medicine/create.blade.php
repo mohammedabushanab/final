@@ -34,8 +34,8 @@
 
                 <!-- /.form-group -->
 
-                <input type="text" name="doctor_id" id="doctor_id" value="{{$id}}"
-                class="form-control form-control-solid" hidden/>
+                 <input type="text" name="doctor_id" id="doctor_id" value="{{$id}}"
+                class="form-control form-control-solid" hidden/> 
 
 
                   <div class="form-group col-md-12">
@@ -75,7 +75,7 @@
                           name="description" rows="4" placeholder=" Enter full description of medicine" cols="50"></textarea>
                   </div>
                   <div class="form-group col-md-12">
-                    <label for="image">Image of Admin</label>
+                    <label for="image">Image of Medicine</label>
                     <input type="file" class="form-control" name="image" id="image" placeholder="Enter Image of Admin">
                   </div>
               </div>

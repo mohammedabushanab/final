@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Guard;
 
 class UserAuthController extends Controller
@@ -56,6 +57,36 @@ class UserAuthController extends Controller
         return response()->view('cms.auth.profile-edit' , compact('admins') );
     }
 
+    public function editPassword(){
+        return response()->view('cms.auth.edit-password');
+    }
+
+    public function updatePassword(Request $request){
+        $guard = auth('admin')->check() ? 'admin' : 'web';
+        $validator = Validator($request->all(),[
+
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|confirmed',
+            'new_password_confirmation' => 'required|string'
+        ]);
+        if(!$validator->fails()){
+            $user = auth($guard)->user();
+            $user->password = Hash::make($request->get('new_password'));
+            $isSaved = $user->save();
+            return ['redirect' =>route('admins.index')];
+
+            if($isSaved){
+            return response()->json(['icon' => 'success' , 'title'=> 'تم تغيير كلمة المرور بنجاح'], 200 );
+
+
+         } else {
+            return response()->json(['icon' => 'error' , 'title' => 'فشلت عملية تغيير كلمة المرور'] , 400);
+        }
+    }
+        else {
+            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()], 400);
+        }
+    }
 
     public function updateProfile(Request $request)
 {
@@ -106,5 +137,5 @@ class UserAuthController extends Controller
 }
 
 
-}
 
+}

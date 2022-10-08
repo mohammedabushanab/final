@@ -49,17 +49,17 @@ class SupplierController extends Controller
             $suppliers->email = $request->get('email');
             $suppliers->password= Hash::make($request->get('password'));
 
-            if (request()->hasFile('file')) {
+            // if (request()->hasFile('file')) {
 
-                $file = $request->file('file');
+            //     $file = $request->file('file');
 
-                $fileName = time() . 'file.' . $file->getClientOriginalExtension();
+            //     $fileName = time() . 'file.' . $file->getClientOriginalExtension();
 
-                $file->move('storage/files/supplier', $fileName);
+            //     $file->move('storage/files/supplier', $fileName);
 
-                $suppliers->file = $fileName;
+            //     $suppliers->file = $fileName;
 
-                }
+            //     }
 
             $isSaved = $suppliers->save();
             if($isSaved){
@@ -138,17 +138,17 @@ class SupplierController extends Controller
             $suppliers->email = $request->get('email');
             $suppliers->password = $request->get('password');
 
-            if (request()->hasFile('file')) {
+            // if (request()->hasFile('file')) {
 
-                $file = $request->file('file');
+            //     $file = $request->file('file');
 
-                $fileName = time() . 'file.' . $file->getClientOriginalExtension();
+            //     $fileName = time() . 'file.' . $file->getClientOriginalExtension();
 
-                $file->move('storage/files/supplier', $fileName);
+            //     $file->move('storage/files/supplier', $fileName);
 
-                $suppliers->file = $fileName;
+            //     $suppliers->file = $fileName;
 
-                }
+            //     }
 
             $isUpdate = $suppliers->save();
             if($isUpdate){

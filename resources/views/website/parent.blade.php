@@ -96,18 +96,20 @@
 
 
 
-
+{{--
         <footer class="site-footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        {{--  @foreach ($abouts as $about )  --}}
 
-                        <div class="block-7">
-                            <h3 class="footer-heading mb-4">About Us</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates sed dolorum excepturi iure eaque, aut unde.</p>
-                        </div>
+                        {{--  <div class="block-7">  --}}
+                            {{--  <h3 class="footer-heading mb-4">{{ $about->title }}</h3>  --}}
+                            {{--  <p>{{ $about->description }}</p>  --}}
+                        {{--  </div>  --}}
+                        {{--  @endforeach  --}}
 
-                    </div>
+                    {{--  </div>
                     <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
                         <h3 class="footer-heading mb-4">Quick Links</h3>
                         <ul class="list-unstyled">
@@ -144,8 +146,9 @@
                     </div>
 
                 </div>
-            </div>
-        </footer>
+            </div>  --}}
+        {{--  </footer>  --}}
+        --}}
     </div>
 
     <script src="{{ asset('website/js/jquery-3.3.1.min.js') }}"></script>

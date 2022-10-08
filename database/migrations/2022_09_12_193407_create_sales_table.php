@@ -15,9 +15,17 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('price');
-            $table->date('date');
-            $table->integer('count')->nullable();
+            $table->string('FirstName');
+            $table->string('LastName');
+            $table->string('Address');
+            $table->string('Phone');
+            $table->string('OrderNotes');
+            $table->string('Product');
+            $table->string('CartSubtotal');
+            $table->number('Total');
+
+
+
             $table->timestamps();
         });
     }
