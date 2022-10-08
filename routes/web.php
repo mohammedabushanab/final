@@ -131,7 +131,7 @@ Route::prefix('/home')->group(function () {
     Route::get('contact', [IndexController::class, 'contact'])->name('website.contact');
     Route::post('contact', [IndexController::class, 'storeContact']);
 
-    Route::get('shopSingle', [IndexController::class, 'shopSingle'])->name('website.shopsingle');
+    Route::get('shopSingle/{id}', [IndexController::class, 'shopSingle'])->name('website.shopsingle');
     Route::get('shop', [IndexController::class, 'shop'])->name('website.shop');
     Route::get('thankyou', [IndexController::class, 'thank'])->name('website.thankyou');
     Route::get('cart', [IndexController::class, 'cart'])->name('website.cart');

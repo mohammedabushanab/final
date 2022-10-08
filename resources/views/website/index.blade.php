@@ -78,10 +78,10 @@
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('/storage/images/medicine/'. $medicine->image)}} " alt="Image"></a>
-                        <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $medicine->name  }}</a></h3>
+                        <a> <img src="{{asset('/storage/images/medicine/'. $medicine->image)}} " alt="Image"></a>
+                        <h3 class="text-dark"><a >{{ $medicine->name  }}</a></h3>
                         <p class="price">{{ $medicine->code }} $</p>
-                        <span></span>
+                        {{--  <a href="{{ rotue('show.show' ,$medicine->id) }}"></a>  --}}
                     </div>
                     @endforeach
 
@@ -108,8 +108,8 @@
                         <div class="nonloop-block-3 owl-carousel">
 
                             <div class="text-center item mb-4">
-                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_03.png') }}" alt="Image"></a>
-                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
+                                <a href="#"> <img src="{{ asset('website/images/product_03.png') }}" alt="Image"></a>
+                                <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
                                 <p class="price">$120.00</p>
                             </div>
 

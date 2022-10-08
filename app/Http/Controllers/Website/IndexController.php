@@ -26,13 +26,16 @@ class IndexController extends Controller
 
              return response()->view('website.about', compact('abouts'));
     }
-    public function checkout($id){
-        $medicines= Medicine::find(2);
+    public function checkout(){
 
-             return response()->view('website.checkout' ,'medicines');
+             return response()->view('website.checkout');
     }
     public function contact(){
              return response()->view('website.contact');
+    }
+
+    public function websiteDet(){
+        return response()->view('website.shop-single');
     }
 
     public function storeContact(Request $request)
@@ -75,15 +78,21 @@ class IndexController extends Controller
     public function thank(){
              return response()->view('website.thankyou');
     }
-    public function cart($id){
+    public function cart(){
         $medicines= Medicine::all();
 
              return response()->view('website.cart' ,compact('medicines'));
-             
+
     }
 
 
+    // public function show($id)
+    // {
+    //     $medicines = Medicine::findOrFail($id);
+    //     return response()->view('website.shop-single', compact('medicines'));
+    // }
 
+    
 
 
 }

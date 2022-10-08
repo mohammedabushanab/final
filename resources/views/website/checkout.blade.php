@@ -94,12 +94,12 @@
                                             <th>Product</th>
                                             <th>Total</th>
                                         </thead>
-                                        @foreach ( $medicines as $medicine )
+                                        {{--  @foreach ( $medicines as $medicine )  --}}
 
                                         <tbody>
                                             <tr>
-                                                <td>[ {{ $medicine->name }} ]<strong class="mx-2">x</strong> 1</td>
-                                                <td>[{{ $medicine->code }}]</td>
+                                                <td><strong class="mx-2">x</strong> 1</td>
+                                                <td></td>
                                             </tr>
 
 
@@ -108,7 +108,7 @@
                                                 <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
                                             </tr>
                                         </tbody>
-                                        @endforeach
+                                        {{--  @endforeach  --}}
 
                                     </table>
 
