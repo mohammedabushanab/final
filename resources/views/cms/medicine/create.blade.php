@@ -35,7 +35,7 @@
                 <!-- /.form-group -->
 
                  <input type="text" name="doctor_id" id="doctor_id" value="{{$id}}"
-                class="form-control form-control-solid" hidden/> 
+                class="form-control form-control-solid" hidden/>
 
 
                   <div class="form-group col-md-12">
@@ -59,8 +59,8 @@
                 <div class="form-group col-md-6" >
 
                   <label for="name">medicine Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter name of medicine">
-                  <label for="code">medicine code</label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter name of medicine" value="{{ $store->name }}">
+                  <label for="code">price</label>
                   <input type="text" class="form-control" name="code" id="code" placeholder="Enter name of medicine">
                 </div>
 

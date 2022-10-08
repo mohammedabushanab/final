@@ -40,7 +40,7 @@
                   <th>ID</th>
                   <th>medicine Name</th>
                   <th>image</th>
-                  <th>code</th>
+                  <th>price</th>
                   <th>ExpirationDate</th>
                   <th>Description</th>
 

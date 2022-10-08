@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -57,6 +58,13 @@ class UserAuthController extends Controller
         return response()->view('cms.auth.profile-edit' , compact('admins') );
     }
 
+
+
+    public function Profile(Request $request){
+
+        $doctors = Doctor::findOrFail(Auth::guard('doctor')->id());
+        return response()->view('cms.auth.profile' , compact('doctors') );
+    }
     public function editPassword(){
         return response()->view('cms.auth.edit-password');
     }

@@ -209,7 +209,7 @@
             </a>
 
           </li>
-@canAny(['Index-Role' , 'Create-Role'])
+{{--  @canAny(['Index-Role' , 'Create-Role'])  --}}
           <li class="nav-header">Roles & Permission</li>
 
 
@@ -222,27 +222,27 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Role')
+                {{--  @can('Index-Role')  --}}
               <li class="nav-item">
                 <a href="{{ route('roles.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-                @can('Create-Role')
+              {{--  @endcan  --}}
+                {{--  @can('Create-Role')  --}}
               <li class="nav-item">
                 <a href="{{ route('roles.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              @endcan
+              {{--  @endcan  --}}
             </ul>
           </li>
-          @endcan
+          {{--  @endcan  --}}
 
-         @canAny(['Index-Permission' , 'Create-Permission'])
+         {{--  @canAny(['Index-Permission' , 'Create-Permission'])  --}}
            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -252,26 +252,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Permission')
+                {{--  @can('Index-Permission')  --}}
               <li class="nav-item">
                 <a href="{{ route('permissions.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-                @can('Create-Permission')
+              {{--  @endcan  --}}
+                {{--  @can('Create-Permission')  --}}
               <li class="nav-item">
                 <a href="{{ route('permissions.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              @endcan
+              {{--  @endcan  --}}
 
             </ul>
           </li>
-          @endcan
+          {{--  @endcan  --}}
 
             <li class="nav-header">User Mangment</li>
 
@@ -577,6 +577,7 @@
             </ul>
           </li>
           @endcan
+
           @canAny(['Index-Sale' , 'Create-Sale'])
 
             <li class="nav-item">
@@ -653,9 +654,9 @@
                 <p>  edit Profile</p>
             </a>
           </li>
-          @elseif (Auth::guard('doctor')->id())
-          {{--  <li class="nav-item">
-            <a href="{{ route('doctor_edit') }}" class="nav-link">
+          {{--  @elseif (Auth::guard('doctor')->id())
+          <li class="nav-item">
+            <a href="{{ route('cms.auth.profile-edit') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-edit text-info"></i>
               <p>  edit Profile</p>
             </a>

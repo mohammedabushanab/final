@@ -196,6 +196,6 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctorss = Doctor::destroy($id);
+        $doctors = Doctor::destroy($id);
     }
 }

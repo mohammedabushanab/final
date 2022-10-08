@@ -84,32 +84,32 @@
 
 
                         <div class="row mb-5">
+
                             <div class="col-md-12">
                                 <h2 class="h3 mb-3 text-black">Your Order</h2>
                                 <div class="p-3 p-lg-5 border">
                                     <table class="table site-block-order-table mb-5">
+
                                         <thead>
                                             <th>Product</th>
                                             <th>Total</th>
                                         </thead>
+                                        @foreach ( $medicines as $medicine )
+
                                         <tbody>
                                             <tr>
-                                                <td>Bioderma <strong class="mx-2">x</strong> 1</td>
-                                                <td>$55.00</td>
+                                                <td>[ {{ $medicine->name }} ]<strong class="mx-2">x</strong> 1</td>
+                                                <td>[{{ $medicine->code }}]</td>
                                             </tr>
-                                            <tr>
-                                                <td>Ibuprofeen <strong class="mx-2">x</strong> 1</td>
-                                                <td>$45.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                                                <td class="text-black">$350.00</td>
-                                            </tr>
+
+
                                             <tr>
                                                 <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
                                                 <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
                                             </tr>
                                         </tbody>
+                                        @endforeach
+
                                     </table>
 
                                     <div class="border mb-3">
@@ -144,11 +144,13 @@
 
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-lg btn-block" onclick="window.location='{{ route('website.thankyou') }}'">Place
-                      Order</button>
+                                 Order</button>
                                     </div>
 
                                 </div>
                             </div>
+
+
                         </div>
 
                     </div>

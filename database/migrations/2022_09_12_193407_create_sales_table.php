@@ -22,7 +22,7 @@ class CreateSalesTable extends Migration
             $table->string('OrderNotes');
             $table->string('Product');
             $table->string('CartSubtotal');
-            $table->number('Total');
+            $table->string('Total');
 
 
 
