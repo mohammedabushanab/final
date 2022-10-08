@@ -35,80 +35,20 @@
                                         <th class="product-remove">Remove</th>
                                     </tr>
                                 </thead>
+                                @foreach ( $medicines as $medicine )
+
                                 <tbody>
-                                    <tr>
-                                        <td class="product-thumbnail">
-                                            <img src="{{ asset('website/images/product_02.png') }}" alt="Image" class="img-fluid">
-                                        </td>
-                                        <td class="product-name">
-                                            <h2 class="h5 text-black">Ibuprofen</h2>
-                                        </td>
-                                        <td>$55.00</td>
-                                        <td>
-                                            <div class="input-group mb-3" style="max-width: 120px;">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                                </div>
-                                                <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                                </div>
-                                            </div>
 
-                                        </td>
-                                        <td>$49.00</td>
-                                        <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                                    </tr>
 
                                     <tr class="cart_item">
                                         <td class="product-thumbnail">
-                                            <img src="{{ asset('website/images/product_01.png') }}" alt="Image" class="img-fluid">
+                                            <img src="{{asset('/storage/images/medicine/'. $medicine->image)}} " alt="Image" class="img-fluid">
                                         </td>
                                         <td class="product-name">
-                                            <h2 class="h5 text-black">Bioderma</h2>
-                                        </td>
-                                        <!-- <td>$49.00</td> -->
-                                        <td class="cart_price">
-                                            <p class="actual_price"> 35.00</p>
-                                        </td>
-                                        <!-- <td>
-                                            <div class="input-group mb-3" style="max-width: 120px;">
-                                                <div class="input-group-prepend">
-                                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                                </div>
-                                                <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                                </div>
-                                            </div>
-
-                                        </td> -->
-                                        <td class="cart_quantity">
-                                            <div class="input-group mb-3" style="max-width: 120px;">
-                                                <div class="input-group-prepend">
-                                                    <button type='button' value='-' class='btn btn-outline-primary quantityminus js-btn-minus' field='quantity'>&minus;</button>
-                                                </div>
-                                                <input type='text' name='quantity' value='1' class='form-control quantity' />
-                                                <div class="input-group-append">
-                                                    <button type='button' value='+' class='btn btn-outline-primary quantityplus js-btn-plus' field='quantity'>&plus;</button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- <td>$49.00</td> -->
-                                        <td class="cart_total">
-                                            <p class="item_price"></p>
-                                        </td>
-                                        <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
-                                    </tr>
-                                    <tr class="cart_item">
-                                        <td class="product-thumbnail">
-                                            <img src="{{ asset('website/images/product_06.png') }}" alt="Image" class="img-fluid">
-                                        </td>
-                                        <td class="product-name">
-                                            <h2 class="h5 text-black">Bioderma</h2>
+                                            <h2 class="h5 text-black">{{ $medicine->name }}</h2>
                                         </td>
                                         <td class="cart_price">
-                                            <p class="actual_price"> 55.00</p>
+                                            <p class="actual_price">{{ $medicine->code }}</p>
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="input-group mb-3" style="max-width: 120px;">
@@ -124,11 +64,11 @@
                                         <td class="cart_total">
                                             <p class="item_price"></p>
                                         </td>
-                                        <td><a href="#" class="btn btn-primary height-auto btn-sm">X</a></td>
+                                        <td><a href="#" class="btn btn-primary height-auto btn-sm delete_cart_data">X</a></td>
                                     </tr>
                                     <!-- <tr class="cart_item">
                                         <td class="cart_price">
-                                            <p class="actual_price"> 55.00</p>
+                                            <p class="actual_price"></p>
                                         </td>
                                         <td class="cart_quantity">
                                             <input type='button' value='-' class='quantityminus' field='quantity' />
@@ -140,6 +80,8 @@
                                         </td>
                                     </tr> -->
                                 </tbody>
+                                @endforeach
+
                             </table>
                         </div>
                     </form>

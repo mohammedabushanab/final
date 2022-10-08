@@ -22,15 +22,18 @@
         <div class="site-section">
             <div class="container">
                 <div class="row">
+                    @foreach ( $medicines as $medicine )
+
                     <div class="col-md-5 mr-auto">
                         <div class="border text-center">
-                            <img src="{{ asset('website/images/product_07_large.png') }}" alt="Image" class="img-fluid p-5">
+                            <img src="{{asset('/storage/images/medicine/'. $medicine->image)}}" alt="Image" class="img-fluid p-5">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2 class="text-black">Ibuprofen Tablets, 200mg</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam,
-                            ratione dolore.</p>
+                        <h2 class="text-black">{{ $medicine->name }}</h2>
+                        <p>
+                            {{ $medicine->description }}
+                        </p>
 
 
                         <p><del>$95.00</del> <strong class="text-primary h4">$55.00</strong></p>
@@ -50,6 +53,7 @@
 
                         </div>
                         <p><a href="{{ route('website.cart') }}" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
+                        @endforeach
 
                         <!-- <div class="mt-5">
               <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">

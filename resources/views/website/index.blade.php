@@ -73,14 +73,18 @@
                 </div>
 
                 <div class="row">
-                    @foreach ( $medicines as $medicine )
 
+                    @foreach ( $medicines as $medicine )
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
+<<<<<<< HEAD
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/medicine/'. $medicine->image) }} " alt="Image"></a>
+=======
+                        <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('/storage/images/medicine/'. $medicine->image)}} " alt="Image"></a>
+>>>>>>> 5a54471d06f33ec1c8c1f9b180c7945a574e44c8
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $medicine->name  }}</a></h3>
-                        <p class="price"><del>95.00</del> &mdash; $55.00</p>
+                        <p class="price">{{ $medicine->code }} $</p>
                         <span></span>
                     </div>
                     @endforeach

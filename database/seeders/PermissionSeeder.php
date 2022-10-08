@@ -24,10 +24,10 @@ class PermissionSeeder extends Seeder
         // Permission::create(['name' => "Edit-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
         // Permission::create(['name' => "Delete-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
 
-        // Permission::create(['name' => "Create-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Index-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Edit-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Delete-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Create-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Index-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Edit-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Delete-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
 
         Permission::create(['name' => "Create-Doctor", 'guard_name' => 'doctor', 'created_at' => now(), 'updated_at' => now()]);
         Permission::create(['name' => "Index-Doctor", 'guard_name' => 'doctor', 'created_at' => now(), 'updated_at' => now()]);

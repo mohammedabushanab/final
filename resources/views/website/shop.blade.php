@@ -57,6 +57,7 @@
         </div> -->
 
                 <div class="row">
+
                     <div class="col text-center my-4">
                         <h1 class="fs-2">Trending Item</h1>
                         <div class="underline mx-auto mt-3"></div>
@@ -64,15 +65,22 @@
                 </div>
 
 
-                <div class="row mt-3 mb-4 button-group filter-button-group">
+                {{--  <div class="row mt-1 mb-1 button-group filter-button-group">
+                    @foreach ( $categories as $category )
 
                     <div class="col d-flex justify-content-center">
+                        <button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">{{ $category->name }}</button>
+                    </div>
+                    @endforeach
+
+                </div>  --}}
+                <div class="row mt-3 mb-4 button-group filter-button-group">
+                    <div class="col d-flex justify-content-center">
                         <button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">All</button>
-                        <button type="button" data-filter=".Vitamins" class="btn btn-primary mx-1 text-dark"></button>
+                        <button type="button" data-filter=".Vitamins" class="btn btn-primary mx-1 text-dark">Vitamins</button>
                         <button type="button" data-filter=".Supplements" class="btn btn-primary mx-1 text-dark">Supplements</button>
                         <button type="button" data-filter=".Diet" class="btn btn-primary mx-1 text-dark">Diet</button>
                     </div>
-
                 </div>
 
                 <div class="row" id="product-list">
@@ -82,7 +90,7 @@
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Bioderma</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
                     </div>
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
+                    {{--  <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('website/images/product_02.png')}}" alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Chanca Piedra</a></h3>
                         <p class="price">$70.00</p>
@@ -144,7 +152,8 @@
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_06.png') }}" alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Poo Pourri</a></h3>
                         <p class="price"><del>$89</del> &mdash; $38.00</p>
-                    </div>
+                    </div>  --}}
+
                 </div>
                 <div class="row mt-5">
                     <div class="col-md-12 text-center">

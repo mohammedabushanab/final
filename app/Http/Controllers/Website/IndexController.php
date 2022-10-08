@@ -28,8 +28,10 @@ class IndexController extends Controller
 
              return response()->view('website.about', compact('abouts'));
     }
-    public function checkout(){
-             return response()->view('website.checkout');
+    public function checkout($id){
+        $medicines= Medicine::find(2);
+
+             return response()->view('website.checkout' ,'medicines');
     }
     public function contact(){
              return response()->view('website.contact');
@@ -62,19 +64,28 @@ class IndexController extends Controller
 
 
     public function shopSingle(){
-        // $abouts=About::take(2)->get();
+        $medicines= Medicine::take(1)->get();
 
-             return response()->view('website.shop-single');
+
+             return response()->view('website.shop-single' , compact('medicines'));
     }
     public function shop(){
-        // $categories=Category::take(2)->get();
+        $categories=Category::all();
 
-             return response()->view('website.shop');
+             return response()->view('website.shop' ,compact('categories'));
     }
     public function thank(){
              return response()->view('website.thankyou');
     }
-    public function cart(){
-             return response()->view('website.cart');
+    public function cart($id){
+        $medicines= Medicine::all();
+
+             return response()->view('website.cart' ,compact('medicines'));
+             
     }
+
+
+
+
+
 }
