@@ -7,18 +7,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
-<<<<<<< HEAD
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
-=======
-
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\RolePermissionController;
-use App\Http\Controllers\RegisterController;
-
->>>>>>> 6d31cc8e4500e7947785da46f2a5a847db023af3
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StoreController;
@@ -41,7 +32,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/temp', function () {
     return view('website.thankyou');
 });
@@ -51,35 +41,14 @@ Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
     route::get('{guard}/register', [RegisterController::class, 'register'])->name('view.register');
     Route::Post('{guard}/confirm', [RegisterController::class, 'storeRegister']);
 });
-=======
-//  Route::get('/temp', function () {
-//      return view('website.thankyou');
-//  });
-Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
-    route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
-    route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
-    route::get('{guard}/register' , [RegisterController::class, 'register'])->name('view.register');
-    Route::Post('{guard}/confirm' , [RegisterController::class ,'storeRegister']);
-});
-
-
-
->>>>>>> 6d31cc8e4500e7947785da46f2a5a847db023af3
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-<<<<<<< HEAD
 // Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
 //     route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
 //     route::post('{guard}/login', [UserAuthController::class, 'login']);
 // });
-=======
-
-
-
-
->>>>>>> 6d31cc8e4500e7947785da46f2a5a847db023af3
 Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function () {
     Route::get('profile/edit', [UserAuthController::class, 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update', [UserAuthController::class, 'updateProfile'])->name('cms.auth.update-profile');
@@ -89,45 +58,11 @@ Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function () {
     route::get('/logout', [UserAuthController::class, 'logout'])->name('view.logout');
 });
 
-// Route::prefix('cms/admin/')->group(function () {
-//     Route::view('', 'cms.parent');
-//     Route::view('temp', 'cms.temp');
-//     Route::view('', 'cms.home')->name('home');
+Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function () {
+    Route::view('', 'cms.parent');
+    Route::view('temp', 'cms.temp');
+    Route::view('', 'cms.home')->name('home');
 
-
-
-<<<<<<< HEAD
-=======
-    // Route::resource('categories', CategoryController::class);
-    // Route::post('categories_update/{id}', [CategoryController::class, 'update'])->name('categories_update');
-
-// Route::prefix('cms/')->middleware('auth:admin,doctor')->group(function(){
-//     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
-//     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
-
-
-
-// });
-Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
-    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
-    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
-    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('doctor_edit');
-    Route::get('password/edit' , [UserAuthController::class , 'editPassword'])->name('cms.admin.edit-password');
-    Route::post('update/password', [UserAuthController::class, 'updatePassword'])->name('cms.auth.update-password');
-
-    Route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
-
-});
-
-
-
-Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
-
-// Route::prefix('cms/admin/')->group(function(){
-
-    Route::view('' , 'cms.parent');
-    Route::view('temp' , 'cms.temp');
-    Route::view('' , 'cms.home')->name('home');
     Route::resource('admins', AdminController::class);
     Route::post('admins_update/{id}', [AdminController::class, 'update'])->name('admins_update');
     Route::get('restore/{id}', [AdminController::class, 'restore'])->name('restore');
@@ -137,7 +72,6 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
     Route::resource('doctors', DoctorController::class);
     Route::post('doctors_update/{id}', [DoctorController::class, 'update'])->name('doctors_update');
 
->>>>>>> 6d31cc8e4500e7947785da46f2a5a847db023af3
     Route::resource('categories', CategoryController::class);
     Route::post('categories_update/{id}', [CategoryController::class, 'update'])->name('categories_update');
 
@@ -182,7 +116,6 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
 
 
 
-<<<<<<< HEAD
     Route::resource('medicines', MedicineController::class);
     Route::post('medicines_update/{id}', [MedicineController::class, 'update'])->name('medicines_update');
 });
@@ -202,38 +135,3 @@ Route::prefix('/home')->group(function () {
     Route::get('cart', [IndexController::class, 'cart'])->name('website.cart');
 });
 // });
-=======
-
-    Route::resource('medicines', MedicineController::class);
-    Route::post('medicines_update/{id}', [MedicineController::class, 'update'])->name('medicines_update');
-
-    Route::resource('medicines' , MedicineController::class);
-    Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
-
-    Route::resource('contacts' , ContactController::class);
-
-
-});
-
-
-Route::prefix('/home')->group(function() {
-
-
-    Route::get('' , [IndexController::class , 'index'])->name('website.index');
-    Route::get('aboutUs' , [IndexController::class , 'about'])->name('website.about');
-    Route::get('checkout' , [IndexController::class , 'checkout'])->name('website.checkout');
-    Route::get('contact' , [IndexController::class , 'contact'])->name('website.contact');
-    Route::post('contact' , [IndexController::class , 'storeContact']);
-
-    Route::get('shopSingle' , [IndexController::class , 'shopSingle'])->name('website.shopsingle');
-    Route::get('shop' , [IndexController::class , 'shop'])->name('website.shop');
-    Route::get('thankyou' , [IndexController::class , 'thank'])->name('website.thankyou');
-    Route::get('cart' , [IndexController::class , 'cart'])->name('website.cart');
-
-    });
-
-
-
-// });
-
->>>>>>> 6d31cc8e4500e7947785da46f2a5a847db023af3
