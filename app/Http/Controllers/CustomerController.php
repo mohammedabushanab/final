@@ -46,7 +46,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = validator($request->all() , [
-
+            'age'=>'required|integer',
         ]);
 
         if(! $validator->fails()){

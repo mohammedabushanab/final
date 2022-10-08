@@ -156,7 +156,7 @@
     formData.append('date_of_birth',document.getElementById('date_of_birth').value);
     formData.append('image',document.getElementById('image').files[0]);
 
-    store('/cms/admin/suppliers' ,formData );
+    store('/cms/admin/suppliers' , formData);
 
 
   }

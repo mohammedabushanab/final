@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\contact;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -16,8 +17,9 @@ class IndexController extends Controller
 
     public function index(){
         $abouts=About::take(1)->get();
+        $medicines= Medicine::all();
 
-    return response()->view('website.index',compact('abouts'));
+    return response()->view('website.index',compact('abouts' , 'medicines'));
     }
     public function about(){
         $abouts=About::take(2)->get();
@@ -51,19 +53,6 @@ class IndexController extends Controller
             return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

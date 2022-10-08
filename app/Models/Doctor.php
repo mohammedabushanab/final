@@ -22,10 +22,4 @@ class Doctor extends Authenticatable
     public function store()
     {
         return $this->hasMany(Store::class);
-    }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
-}
+    }}

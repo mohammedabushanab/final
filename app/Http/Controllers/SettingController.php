@@ -22,7 +22,8 @@ class SettingController extends Controller
 
         if(! $validator->fails()){
             $user = auth('admin')->user();
-            $user->new_password = Hash::make($request->get('new_password'));
+            $user->
+            password = Hash::make($request->get('new_password'));
             $isSaved = $user->save();
             return ['redirect' =>route('admins.index')];
 

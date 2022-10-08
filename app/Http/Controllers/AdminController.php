@@ -36,7 +36,7 @@ class AdminController extends Controller
     {
         $admins = Admin::all();
         $roles = Role::where('guard_name', 'admin')->get();
-        $this->authorize('create', Admin::class);
+        // $this->authorize('create', Admin::class);
 
         return response()->view('cms.admin.create ', compact('admins', 'roles'));
     }
