@@ -60,11 +60,7 @@
                     <td>{{ $admin->email }}</td>
                     <td>{{ $admin->user ? $admin->user->mobile : 'Null' }}</td>
                     <td>
-<<<<<<< HEAD
-                      <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/admin/'. $admin->image )}}" width="50" height="50" alt="User Image">
-=======
                         <img class="img-circle img-bordered-sm" src="{{asset('/storage/images/admin/'. $admin->user->image)}}" width="50" height="50" alt="User Image">
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
                    </td>
 
                     <td><a href="{{route('indexAbout',['id'=>$admin->id])}}"

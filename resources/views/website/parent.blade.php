@@ -153,11 +153,16 @@
     <script src="{{ asset('website/js/popper.min.js') }}"></script>
     <script src="{{ asset('website/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('website/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('website/js/jquery.magnific-popup.min.js') }}"></script>
+    {{--  <script src="{{ asset('website/js/jquery.magnific-popup.min.js') }}"></script>  --}}
+    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>  --}}
+
+
     <script src="{{ asset('website/js/aos.js') }}"></script>
+    @yield('scripts')
 
     <script src="{{ asset('website/js/main.js') }}"></script>
-    @yield('scripts')
+
 
 </body>
 

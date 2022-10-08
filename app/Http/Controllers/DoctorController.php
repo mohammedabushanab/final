@@ -23,6 +23,9 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::with('user')->withCount('medicines')->orderBy('id', 'desc')->get();
+        // $this->authorize('viewAny', Doctor::class);
+
+
         return response()->view('cms.doctor.index', compact('doctors'));
     }
 
@@ -34,7 +37,8 @@ class DoctorController extends Controller
     public function create()
     {
         $doctors = Doctor::all();
-        $roles = Role::where('guard_name', 'author')->get();
+        $roles = Role::where('guard_name', 'doctor')->get();
+        // $this->authorize('create', Doctor::class);
 
         return response()->view('cms.doctor.create', compact('doctors', 'roles'));
     }
@@ -79,8 +83,8 @@ class DoctorController extends Controller
 
                     $users->image = $imageName;
                 }
-                // $roles = Role::findOrFail($request->get('role_id'));
-                // $doctors->assignRole($roles->name);
+                $roles = Role::findOrFail($request->get('role_id'));
+                $doctors->assignRole($roles->name);
                 $users->firstName = $request->get('firstName');
                 $users->lastName = $request->get('lastName');
                 $users->mobile = $request->get('mobile');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,9 +24,4 @@ class Doctor extends Authenticatable
     {
         return $this->hasMany(Store::class);
     }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
 }

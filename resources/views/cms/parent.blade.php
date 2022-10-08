@@ -209,8 +209,9 @@
             </a>
 
           </li>
-
+@canAny(['Index-Role' , 'Create-Role'])
           <li class="nav-header">Roles & Permission</li>
+
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -221,22 +222,27 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Role')
               <li class="nav-item">
                 <a href="{{ route('roles.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+                @can('Create-Role')
               <li class="nav-item">
                 <a href="{{ route('roles.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-
+              @endcan
             </ul>
           </li>
+          @endcan
 
+         @canAny(['Index-Permission' , 'Create-Permission'])
            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -246,25 +252,30 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('Index-Permission')
               <li class="nav-item">
                 <a href="{{ route('permissions.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
+              @endcan
+                @can('Create-Permission')
               <li class="nav-item">
                 <a href="{{ route('permissions.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
+              @endcan
 
             </ul>
           </li>
+          @endcan
 
             <li class="nav-header">User Mangment</li>
 
-         {{--  @canAny(['Index-Admin' , 'Create-Admin'])  --}}
+         @canAny(['Index-Admin' , 'Create-Admin'])
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -274,26 +285,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                {{--  @can('Index-Admin')  --}}
+                @can('Index-Admin')
               <li class="nav-item">
                 <a href="{{ route('admins.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              {{--  @endcan  --}}
-              {{--  @can('Create-Admin')  --}}
+              @endcan
+              @can('Create-Admin')
               <li class="nav-item">
                 <a href="{{ route('admins.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              {{--  @endcan  --}}
+              @endcan
 
             </ul>
           </li>
-          {{--  @endcan  --}}
+          @endcan
 
 
          @canAny(['Index-Doctor' , 'Create-Doctor'])
@@ -623,16 +634,16 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-              <li class="nav-item">
+              {{--  <li class="nav-item">
                 <a href="{{ route('contacts.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
-              </li>
+              </li>  --}}
           </ul>
         </li>  -
 
-       
+
 
           <li class="nav-header">Setting</li>
           @if (Auth::guard('admin')->id())
@@ -643,12 +654,12 @@
             </a>
           </li>
           @elseif (Auth::guard('doctor')->id())
-          <li class="nav-item">
+          {{--  <li class="nav-item">
             <a href="{{ route('doctor_edit') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-edit text-info"></i>
               <p>  edit Profile</p>
             </a>
-          </li>
+          </li>  --}}
         @endif
 
         @if (Auth::guard('admin')->id())

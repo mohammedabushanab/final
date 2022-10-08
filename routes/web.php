@@ -7,13 +7,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
-<<<<<<< HEAD
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
-=======
-use App\Http\Controllers\RegisterController;
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StoreController;
@@ -36,25 +32,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/temp', function () {
-     return view('website.thankyou');
- });
-Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function(){
-    route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
-    route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
-    route::get('{guard}/register' , [RegisterController::class, 'register'])->name('view.register');
-    Route::Post('{guard}/confirm' , [RegisterController::class ,'storeRegister']);
+Route::get('/temp', function () {
+    return view('website.thankyou');
+});
+Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
+    route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
+    route::post('{guard}/login', [UserAuthController::class, 'login']);
+    route::get('{guard}/register', [RegisterController::class, 'register'])->name('view.register');
+    Route::Post('{guard}/confirm', [RegisterController::class, 'storeRegister']);
 });
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-<<<<<<< HEAD
-Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
-    route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
-    route::post('{guard}/login', [UserAuthController::class, 'login']);
-});
-Route::prefix('cms/admin')->group(function () {
+// Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
+//     route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
+//     route::post('{guard}/login', [UserAuthController::class, 'login']);
+// });
+Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function () {
     Route::get('profile/edit', [UserAuthController::class, 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update', [UserAuthController::class, 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('password/edit', [SettingController::class, 'editPassword'])->name('cms.admin.edit-password');
@@ -79,35 +74,6 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function () 
 
     Route::resource('categories', CategoryController::class);
     Route::post('categories_update/{id}', [CategoryController::class, 'update'])->name('categories_update');
-=======
-// Route::prefix('cms/')->middleware('auth:admin,doctor')->group(function(){
-//     route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
-//     route::post('{guard}/login'  ,[UserAuthController::class, 'login']);
-
-
-
-// });
-Route::prefix('cms/admin')->middleware('auth:admin,doctor')->group(function(){
-    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
-    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
-    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('doctor_edit');
-    Route::get('password/edit' , [SettingController::class , 'editPassword'])->name('cms.admin.edit-password');
-    Route::post('update/password', [SettingController::class, 'updatePassword'])->name('cms.auth.update-password');
-
-    Route::get('/logout' , [UserAuthController::class, 'logout'])->name('view.logout');
-
-});
-
-
-
-Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
-
-// Route::prefix('cms/admin/')->group(function(){
-
-    Route::view('' , 'cms.parent');
-    Route::view('temp' , 'cms.temp');
-    Route::view('' , 'cms.home')->name('home');
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
 
     Route::resource('suppliers', SupplierController::class);
     Route::post('suppliers_update/{id}', [SupplierController::class, 'update'])->name('suppliers_update');
@@ -150,31 +116,22 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function(){
 
 
 
-<<<<<<< HEAD
     Route::resource('medicines', MedicineController::class);
     Route::post('medicines_update/{id}', [MedicineController::class, 'update'])->name('medicines_update');
-=======
-    Route::resource('medicines' , MedicineController::class);
-    Route::post('medicines_update/{id}' , [MedicineController::class , 'update'])->name('medicines_update');
-
-    Route::resource('contacts' , ContactController::class);
-
->>>>>>> b0f444fbea03606ba8c74c415d83c47cedd543b2
 });
 
-Route::prefix('/home')->group(function() {
+Route::prefix('/home')->group(function () {
 
 
-    Route::get('index' , [IndexController::class , 'index'])->name('website.index');
-    Route::get('aboutUs' , [IndexController::class , 'about'])->name('website.about');
-    Route::get('checkout' , [IndexController::class , 'checkout'])->name('website.checkout');
-    Route::get('contact' , [IndexController::class , 'contact'])->name('website.contact');
-    Route::post('contact' , [IndexController::class , 'storeContact']);
+    Route::get('index', [IndexController::class, 'index'])->name('website.index');
+    Route::get('aboutUs', [IndexController::class, 'about'])->name('website.about');
+    Route::get('checkout', [IndexController::class, 'checkout'])->name('website.checkout');
+    Route::get('contact', [IndexController::class, 'contact'])->name('website.contact');
+    Route::post('contact', [IndexController::class, 'storeContact']);
 
-    Route::get('shopSingle' , [IndexController::class , 'shopSingle'])->name('website.shopsingle');
-    Route::get('shop' , [IndexController::class , 'shop'])->name('website.shop');
-    Route::get('thankyou' , [IndexController::class , 'thank'])->name('website.thankyou');
-    Route::get('cart' , [IndexController::class , 'cart'])->name('website.cart');
-
-    });
+    Route::get('shopSingle', [IndexController::class, 'shopSingle'])->name('website.shopsingle');
+    Route::get('shop', [IndexController::class, 'shop'])->name('website.shop');
+    Route::get('thankyou', [IndexController::class, 'thank'])->name('website.thankyou');
+    Route::get('cart', [IndexController::class, 'cart'])->name('website.cart');
+});
 // });

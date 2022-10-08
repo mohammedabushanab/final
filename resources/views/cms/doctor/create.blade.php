@@ -48,12 +48,12 @@
                 </div>  --}}
 <div class="row">
                     	<div class="form-group col-md-12">
-	                  <label for="role_id">Country Name</label>
+	                  <label for="role_id">Role</label>
 	                  <select class="form-control select2" name="role_id"   id="role_id" style="width: 100%;" aria-label=".form-select-sm example">
 	                    @foreach ($roles as $role)
 	                     <option value="{{ $role->id}}">{{ $role->name }}                      </option>
-	                    @endforeach
 
+	                    @endforeach
 	                  </select>
 </div>
                 </div>

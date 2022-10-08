@@ -54,9 +54,14 @@
                             </tr>
                           </thead>
                           <tbody>
+{{--  @foreach($permissions as $permission)
+    <option value="{{$permission->id}}" @if($role->permission->contains('id',$permission->id)) selected="selected"  @else '' @endif>
+        {{$permission->name}} <span class="text-danger">({{$permission->label}})</span>
+    </option>
+@endforeach  --}}
                             @foreach ($permissions as $permission)
+
                             <tr>
-                              {{-- <span class="tag tag-success">Approved</span>s --}}
                               <td>{{$permission->id}}</td>
                               <td>{{$permission->name}}</td>
                               <td> {{$permission->guard_name}}</td>
@@ -70,7 +75,11 @@
                                 </div>
                               </td>
                             </tr>
+
                             @endforeach
+
+
+
                           </tbody>
                         </table>
                       </div>

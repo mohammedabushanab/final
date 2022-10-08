@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
         $admins = Admin::with('user')->withCount('abouts')->orderBy('id', 'desc')->simplePaginate(7);
-        // $this->authorize('viewAny' , Admin::class);
+        $this->authorize('viewAny', Admin::class);
 
         return response()->view('cms.admin.index', compact('admins'));
     }

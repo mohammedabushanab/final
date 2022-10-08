@@ -9,6 +9,19 @@
 
 
 @section('styles')
+<link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('website/fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('website/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('website/css/owl.theme.default.min.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('website/css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('website/css/style.css') }}">
 @endsection
 @section('content')
         <div class="bg-light py-3">
@@ -177,8 +190,10 @@
      @endsection
      @section('scripts')
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- isotope plugin -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>  --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 @endsection
 </body>

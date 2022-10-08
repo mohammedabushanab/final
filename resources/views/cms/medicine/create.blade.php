@@ -39,7 +39,7 @@
 
 
                   <div class="form-group col-md-12">
-                    <label for="category_id"> Category Name</label>
+                    <label for="category_id"> Category </label>
                     <select class="form-control" name="category_id" style="width: 100%;"
                         id="category_id" aria-label=".form-select-sm example">
                         @foreach ($categories as $category )
