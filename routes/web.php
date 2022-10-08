@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
@@ -80,6 +81,9 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function () 
 
     Route::resource('sales', SaleController::class);
     Route::post('sales_update/{id}', [SaleController::class, 'update'])->name('sales_update');
+
+    Route::resource('sliders' , SliderController::class);
+    Route::post('sliders_update/{id}' , [SliderController::class , 'update'])->name('sliders_update');
 
     Route::resource('customers', CustomerController::class);
     Route::post('customers_update/{id}', [CustomerController::class, 'update'])->name('customers_update');

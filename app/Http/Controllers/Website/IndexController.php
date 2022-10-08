@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Category;
 use App\Models\contact;
 use App\Models\Medicine;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -18,8 +19,9 @@ class IndexController extends Controller
     public function index(){
         $abouts=About::take(1)->get();
         $medicines= Medicine::all();
+        $sliders = Slider::all();
 
-    return response()->view('website.index',compact('abouts' , 'medicines'));
+    return response()->view('website.index',compact('abouts' , 'medicines' , 'sliders'));
     }
     public function about(){
         $abouts=About::take(2)->get();

@@ -78,7 +78,7 @@
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/medicine/'. $medicine->image) }}' " alt="Image"></a>
+                        <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/medicine/'. $medicine->image) }} " alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $medicine->name  }}</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
                         <span></span>
@@ -105,30 +105,16 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 block-3 products-wrap">
+
                         <div class="nonloop-block-3 owl-carousel">
+                            @foreach($sliders as $slider)
+                            <div class="text-center item mb-4 @if($loop->first) active @endif">
+                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/slider/'. $slider->image) }}" alt="Image"></a>
+                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $slider->name }}</a></h3>
+                                <p class="price">{{ $slider->price }}</p>
+                            </div>
+                            @endforeach
 
-                            <div class="text-center item mb-4">
-                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_03.png') }}" alt="Image"></a>
-                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
-                                <p class="price">$120.00</p>
-                            </div>
-
-                            <div class="text-center item mb-4">
-                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_01.png') }}" alt="Image"></a>
-                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
-                                <p class="price">$120.00</p>
-                            </div>
-
-                            <div class="text-center item mb-4">
-                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_02.png') }}" alt="Image"></a>
-                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
-                                <p class="price">$120.00</p>
-                            </div>
-                            <div class="text-center item mb-4">
-                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_04.png') }}" alt="Image"></a>
-                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
-                                <p class="price">$120.00</p>
-                            </div>
 
 
 
