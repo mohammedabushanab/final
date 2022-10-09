@@ -56,13 +56,7 @@
           </div>
         </div> -->
 
-                <div class="row">
 
-                    <div class="col text-center my-4">
-                        <h1 class="fs-2">Trending Item</h1>
-                        <div class="underline mx-auto mt-3"></div>
-                    </div>
-                </div>
 
 
                 {{--  <div class="row mt-1 mb-1 button-group filter-button-group">
@@ -84,12 +78,38 @@
                 </div>
 
                 <div class="row" id="product-list">
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
+                    {{--  <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
                         <span class="tag">Sale</span>
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('website/images/product_01.png')}}"alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Bioderma</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
+                    </div>  --}}
+
+                     @foreach ($medicines as $medicine )
+                        {{--  @if($category->id == $medicine->category_id)  --}}
+
+
+                        <div class="col-lg-4 col-sm-6 portfolio-item Vitamins">
+                            <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">{{ $medicine->name }}</a>
+                                    </h4>
+                                    <p class="card-text">
+                                        {{ $medicine->description }}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        {{--  @endif  --}}
+                        {{--  @endforeach  --}}
+
                     </div>
+
+
+                    @endforeach
                     {{--  <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('website/images/product_02.png')}}" alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Chanca Piedra</a></h3>
@@ -178,7 +198,7 @@
 
 
 
-            <section class="gray-sec">
+            {{--  <section class="gray-sec">
                 <div class="container">
                     <!-- category Section -->
                     @foreach ($categories as $category )
@@ -214,7 +234,7 @@
 
                 </div>
 
-            </section>
+            </section>  --}}
 
 
         </div>

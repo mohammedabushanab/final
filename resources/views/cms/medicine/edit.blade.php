@@ -64,7 +64,7 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="store_id"> medicine Name</label>
+                    <label for="store_id"> medicine Name 0</label>
                     <select class="form-control" name="store_id" style="width: 100%;"
                         id="store_id" aria-label=".form-select-sm example">
                         @foreach ($stores as $store )

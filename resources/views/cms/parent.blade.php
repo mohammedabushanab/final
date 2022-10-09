@@ -209,7 +209,6 @@
             </a>
 
           </li>
-{{-- @canAny(['Index-Role' , 'Create-Role']) --}}
 {{--  @canAny(['Index-Role' , 'Create-Role'])  --}}
           <li class="nav-header">Roles & Permission</li>
 
@@ -223,40 +222,25 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-
-                {{-- @can('Index-Role') --}}
-
                 {{--  @can('Index-Role')  --}}
-
               <li class="nav-item">
                 <a href="{{ route('roles.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              {{-- @endcan --}}
-                {{-- @can('Create-Role') --}}
-
               {{--  @endcan  --}}
                 {{--  @can('Create-Role')  --}}
-
               <li class="nav-item">
                 <a href="{{ route('roles.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-
-              {{-- @endcan --}}
-            </ul>
-          </li>
-          {{-- @endcan --}}
-
               {{--  @endcan  --}}
             </ul>
           </li>
           {{--  @endcan  --}}
-
 
          {{--  @canAny(['Index-Permission' , 'Create-Permission'])  --}}
            <li class="nav-item">
@@ -477,8 +461,9 @@
           </li>
           @endcan
 
-          <li class="nav-item">
+          {{--  @canAny(['Index-Stores'])  --}}
 
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-globe-americas"></i>
               <p>
@@ -488,21 +473,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('sliders.index') }}" class="nav-link">
-                    <i class="fas fa-list-alt nav-icon"></i>
-                    <p>Index</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('sliders.create') }}" class="nav-link">
-                    <i class="fas fa-plus-circle nav-icon"></i>
-                    <p>Create</p>
-                  </a>
-                </li>
+                {{--  @can('Index-Slider')  --}}
+              <li class="nav-item">
+                <a href="{{ route('sliders.index') }}" class="nav-link">
+                  <i class="fas fa-list-alt nav-icon"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+                {{--  @endcan  --}}
+                {{--  @can('Create-Slider')  --}}
+              <li class="nav-item">
+                <a href="{{ route('sliders.create') }}" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+              {{--  @endcan  --}}
 
             </ul>
           </li>
+          {{--  @endcan  --}}
+
+
 
 
           <li class="nav-item">
