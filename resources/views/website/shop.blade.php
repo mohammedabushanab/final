@@ -65,7 +65,7 @@
                 </div>
 
 
-                <div class="row mt-1 mb-1 button-group filter-button-group">
+                {{--  <div class="row mt-1 mb-1 button-group filter-button-group">
                     @foreach ( $categories as $category )
 
                     <div class="col d-flex justify-content-center">
@@ -73,6 +73,14 @@
                     </div>
                     @endforeach
 
+                </div>  --}}
+                <div class="row mt-3 mb-4 button-group filter-button-group">
+                    <div class="col d-flex justify-content-center">
+                        <button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">All</button>
+                        <button type="button" data-filter=".Vitamins" class="btn btn-primary mx-1 text-dark">Vitamins</button>
+                        <button type="button" data-filter=".Supplements" class="btn btn-primary mx-1 text-dark">Supplements</button>
+                        <button type="button" data-filter=".Diet" class="btn btn-primary mx-1 text-dark">Diet</button>
+                    </div>
                 </div>
 
                 <div class="row" id="product-list">
@@ -82,7 +90,7 @@
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Bioderma</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
                     </div>
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
+                    {{--  <div class="col-sm-6 col-lg-4 text-center item mb-4 Vitamins">
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('website/images/product_02.png')}}" alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Chanca Piedra</a></h3>
                         <p class="price">$70.00</p>
@@ -144,7 +152,7 @@
                         <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_06.png') }}" alt="Image"></a>
                         <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Poo Pourri</a></h3>
                         <p class="price"><del>$89</del> &mdash; $38.00</p>
-                    </div>
+                    </div>  --}}
 
                 </div>
                 <div class="row mt-5">
@@ -163,7 +171,61 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+            <section class="gray-sec">
+                <div class="container">
+                    <!-- category Section -->
+                    @foreach ($categories as $category )
+
+                    <h3 class="my-4">{{ $category->name }}</h3>
+
+                    <div class="row">
+                        @foreach ($medicines as $medicine )
+                        @if($category->id == $medicine->category_id)
+
+
+                        <div class="col-lg-4 col-sm-6 portfolio-item">
+                            <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="{{asset('/storage/images/medicine/'. $medicine->image)}}" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">{{ $medicine->name }}</a>
+                                    </h4>
+                                    <p class="card-text">
+                                        {{ $medicine->description }}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+
+                    </div>
+
+
+                    @endforeach
+
+                </div>
+
+            </section>
+
+
         </div>
+
+
+
+
+
+
+
+
 
 
         <div class="site-section bg-secondary bg-image" style="background-image: url('{{ asset('website/images/bg_2.jpg') }}');">

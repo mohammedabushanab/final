@@ -32,7 +32,6 @@
                                 <h5>Free <br> Shipping</h5>
                                 <p>
                                     Amet sit amet dolor
-                                    <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
                                 </p>
                             </a>
                         </div>
@@ -43,7 +42,6 @@
                                 <h5>Season <br> Sale 50% Off</h5>
                                 <p>
                                     Amet sit amet dolor
-                                    <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
                                 </p>
                             </a>
                         </div>
@@ -54,7 +52,6 @@
                                 <h5>Buy <br> A Gift Card</h5>
                                 <p>
                                     Amet sit amet dolor
-                                    <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
                                 </p>
                             </a>
                         </div>
@@ -73,23 +70,30 @@
                 </div>
 
                 <div class="row">
-
                     @foreach ( $medicines as $medicine )
+
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a> <img src="{{asset('/storage/images/medicine/'. $medicine->image)}} " alt="Image"></a>
-                        <h3 class="text-dark"><a >{{ $medicine->name  }}</a></h3>
+                        <input type="text" name="medicine_id" id="medicine_id" value="{{$medicine->id}}"
+                        class="form-control form-control-solid" hidden/>
+
+                        <a href="{{ route('website.shopsingle') }}"> <img src="{{asset('/storage/images/medicine/'. $medicine->image)}}"width="200" height="150"  alt="Image"> </a>
+
+                        <h3 class="text-dark">{{ $medicine->name  }}</a></h3>
                         <p class="price">{{ $medicine->code }} $</p>
-                        {{--  <a href="{{ rotue('show.show' ,$medicine->id) }}"></a>  --}}
+
+                        <a href="{{route('website.det' ,$medicine->id )}}"  type="button" class="btn btn-info">view</a>
+
                     </div>
+
                     @endforeach
 
-
                 </div>
+
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="{{ route('website.shop') }}" class="btn btn-primary px-4 py-3">View All Products</a>
+                        <a href="{{ route('website.det',$medicine->id) }}" class="btn btn-primary px-4 py-3">View All Products</a>
                     </div>
                 </div>
             </div>
@@ -105,9 +109,17 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 block-3 products-wrap">
-                        <div class="nonloop-block-3 owl-carousel">
 
-                            <div class="text-center item mb-4">
+                        <div class="nonloop-block-3 owl-carousel">
+                            @foreach($sliders as $slider)
+                            <div class="text-center item mb-4 @if($loop->first) active @endif">
+                                <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/slider/'. $slider->image) }}" alt="Image"></a>
+                                <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $slider->name }}</a></h3>
+                                <p class="price">{{ $slider->price }}</p>
+                            </div>
+                            @endforeach
+
+                            {{--  <div class="text-center item mb-4">
                                 <a href="#"> <img src="{{ asset('website/images/product_03.png') }}" alt="Image"></a>
                                 <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
                                 <p class="price">$120.00</p>
@@ -128,7 +140,7 @@
                                 <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_04.png') }}" alt="Image"></a>
                                 <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
                                 <p class="price">$120.00</p>
-                            </div>
+                            </div>  --}}
 
 
 
@@ -205,7 +217,6 @@
                         <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{{ asset('website/images/bg_1.jpg') }}');">
                             <div class="banner-1-inner align-self-center">
                                 <h2>Pharma Products</h2>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
                                 </p>
                             </div>
                         </a>
@@ -214,7 +225,6 @@
                         <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{{ asset('website/images/bg_2.jpg') }}');">
                             <div class="banner-1-inner ml-auto  align-self-center">
                                 <h2>Rated by Experts</h2>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
                                 </p>
                             </div>
                         </a>

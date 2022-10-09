@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StroeController;
 use App\Http\Controllers\SupplierController;
@@ -83,6 +84,9 @@ Route::prefix('cms/admin/')->middleware('auth:admin,doctor')->group(function () 
     Route::resource('sales', SaleController::class);
     Route::post('sales_update/{id}', [SaleController::class, 'update'])->name('sales_update');
 
+    Route::resource('sliders' , SliderController::class);
+    Route::post('sliders_update/{id}' , [SliderController::class , 'update'])->name('sliders_update');
+
     Route::resource('customers', CustomerController::class);
     Route::post('customers_update/{id}', [CustomerController::class, 'update'])->name('customers_update');
 
@@ -131,9 +135,15 @@ Route::prefix('/home')->group(function () {
     Route::get('contact', [IndexController::class, 'contact'])->name('website.contact');
     Route::post('contact', [IndexController::class, 'storeContact']);
 
-    Route::get('shopSingle/{id}', [IndexController::class, 'shopSingle'])->name('website.shopsingle');
+    Route::get('shopSingle', [IndexController::class, 'shopSingle'])->name('website.shopsingle');
     Route::get('shop', [IndexController::class, 'shop'])->name('website.shop');
     Route::get('thankyou', [IndexController::class, 'thank'])->name('website.thankyou');
     Route::get('cart', [IndexController::class, 'cart'])->name('website.cart');
+    // Route::get('show/{id}', [IndexController::class, 'show']);
+
+    // Route::get('/medicine_de/{id}', [IndexController::class, '']);
+
+    Route::get('website.det/{id}/',[IndexController::class ,'websiteDet'])->name('website.det');
 });
+
 // });

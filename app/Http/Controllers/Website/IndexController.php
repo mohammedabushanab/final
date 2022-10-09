@@ -7,19 +7,29 @@ use App\Models\About;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\contact;
+use App\Models\Doctor;
 use App\Models\Medicine;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use PhpParser\Comment\Doc;
 
 class IndexController extends Controller
 {
 
+    public function websiteDet(){
+    // $medicines= Medicine::all();
+    $medicines= Medicine::all();
+
+        return response()->view('website.shop-single');
+    }
 
 
     public function index(){
         $abouts=About::take(1)->get();
         $medicines= Medicine::all();
+        $sliders = Slider::take(4)->get();
 
-    return response()->view('website.index',compact('abouts' , 'medicines'));
+    return response()->view('website.index',compact('abouts' , 'medicines' , 'sliders'));
     }
     public function about(){
         $abouts=About::take(2)->get();
@@ -34,9 +44,11 @@ class IndexController extends Controller
              return response()->view('website.contact');
     }
 
-    public function websiteDet(){
-        return response()->view('website.shop-single');
-    }
+    // public function websiteDet($id){
+    //          $medicines= Medicine::find($id);
+
+    //     return response()->view('website.shop-single' ,'medicines');
+    // }
 
     public function storeContact(Request $request)
     {
@@ -64,16 +76,17 @@ class IndexController extends Controller
 
 
 
-    public function shopSingle(){
-        $medicines= Medicine::take(1)->get();
+    public function shopSingle($id){
+        $medicines= Medicine::all();
 
-
-             return response()->view('website.shop-single' , compact('medicines'));
+        // $medicines= Medicine::take(1)->get();
+        return response()->view('website.shop-single' , compact('medicines'));
     }
     public function shop(){
         $categories=Category::all();
+        $medicines= Medicine::all();
 
-             return response()->view('website.shop' ,compact('categories'));
+             return response()->view('website.shop' ,compact('categories' ,'medicines'));
     }
     public function thank(){
              return response()->view('website.thankyou');
@@ -86,13 +99,8 @@ class IndexController extends Controller
     }
 
 
-    // public function show($id)
-    // {
-    //     $medicines = Medicine::findOrFail($id);
-    //     return response()->view('website.shop-single', compact('medicines'));
-    // }
 
-    
+
 
 
 }
