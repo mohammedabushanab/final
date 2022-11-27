@@ -307,7 +307,7 @@
           @endcan
 
 
-         @canAny(['Index-Doctor' , 'Create-Doctor'])
+         {{-- @canAny(['Index-Doctor' , 'Create-Doctor']) --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -317,26 +317,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Doctor')
+                {{-- @can('Index-Doctor') --}}
               <li class="nav-item">
                 <a href="{{ route('doctors.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-              @can('Create-Doctor')
+              {{-- @endcan --}}
+              {{-- @can('Create-Doctor') --}}
               <li class="nav-item">
                 <a href="{{ route('doctors.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              @endcan
+              {{-- @endcan --}}
 
             </ul>
           </li>
-              @endcan
+              {{-- @endcan --}}
 
 
          {{-- @canAny(['Index-Supplier' , 'Create-Supplier']) --}}
@@ -430,7 +430,7 @@
 
 
 
-          @canAny(['Index-Stores'])
+          {{-- @canAny(['Index-Stores']) --}}
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -442,14 +442,20 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Stores')
+                {{-- @can('Index-Stores') --}}
               <li class="nav-item">
                 <a href="{{ route('stores.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-                @endcan
+              <li class="nav-item">
+                <a href="{{ route('stores.create') }}" class="nav-link">
+                  <i class="fas fa-list-alt nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+                {{-- @endcan --}}
               {{--  <li class="nav-item">
                 <a href="{{ route('medicines.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
@@ -459,7 +465,7 @@
 
             </ul>
           </li>
-          @endcan
+          {{-- @endcan --}}
 
           {{--  @canAny(['Index-Stores'])  --}}
 
@@ -579,7 +585,7 @@
           </li>  --}}
 
           <li class="nav-header">Content Mangment</li>
-          @canAny(['Index-Category' , 'Create-Category'])
+          {{-- @canAny(['Index-Category' , 'Create-Category']) --}}
             <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-globe-americas"></i>
@@ -590,26 +596,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-                @can('Index-Category')
+                {{-- @can('Index-Category') --}}
               <li class="nav-item">
                 <a href="{{ route('categories.index') }}" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Index</p>
                 </a>
               </li>
-              @endcan
-              @can('Create-Category')
+              {{-- @endcan --}}
+              {{-- @can('Create-Category') --}}
               <li class="nav-item">
                 <a href="{{ route('categories.create') }}" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
-              @endcan
+              {{-- @endcan --}}
 
             </ul>
           </li>
-          @endcan
+          {{-- @endcan --}}
 
           @canAny(['Index-Sale' , 'Create-Sale'])
 

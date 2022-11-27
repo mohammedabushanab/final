@@ -83,7 +83,7 @@
                         <h3 class="text-dark">{{ $medicine->name  }}</a></h3>
                         <p class="price">{{ $medicine->code }} $</p>
 
-                        <a href="{{route('website.det' ,$medicine->id )}}"  type="button" class="btn btn-info">view</a>
+                        <a href="{{route('website.det', $medicine->id )}}"  type="button" class="btn btn-info">view</a>
 
                     </div>
 
@@ -93,7 +93,7 @@
 
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="{{ route('website.det',$medicine->id) }}" class="btn btn-primary px-4 py-3">View All Products</a>
+                        <a href="{{ route('website.shop') }}" class="btn btn-primary px-4 py-3">View All Products</a>
                     </div>
                 </div>
             </div>
@@ -115,11 +115,11 @@
                             <div class="text-center item mb-4 @if($loop->first) active @endif">
                                 <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('/storage/images/slider/'. $slider->image) }}" alt="Image"></a>
                                 <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">{{ $slider->name }}</a></h3>
-                                <p class="price">{{ $slider->price }}</p>
+                                <p class="price">{{ $slider->price }}$</p>
                             </div>
                             @endforeach
 
-                            {{--  <div class="text-center item mb-4">
+                              <div class="text-center item mb-4">
                                 <a href="#"> <img src="{{ asset('website/images/product_03.png') }}" alt="Image"></a>
                                 <h3 class="text-dark"><a href="#">Umcka Cold Care</a></h3>
                                 <p class="price">$120.00</p>
@@ -140,7 +140,7 @@
                                 <a href="{{ route('website.shopsingle') }}"> <img src="{{ asset('website/images/product_04.png') }}" alt="Image"></a>
                                 <h3 class="text-dark"><a href="{{ route('website.shopsingle') }}">Umcka Cold Care</a></h3>
                                 <p class="price">$120.00</p>
-                            </div>  --}}
+                            </div>  
 
 
 

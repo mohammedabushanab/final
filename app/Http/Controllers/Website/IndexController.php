@@ -18,9 +18,9 @@ class IndexController extends Controller
 
     public function websiteDet(){
     // $medicines= Medicine::all();
-    $medicines= Medicine::all();
+    $medicines= Medicine::take(1)->get();
 
-        return response()->view('website.shop-single');
+        return response()->view('website.shop-single', compact('medicines') );
     }
 
 
@@ -76,8 +76,9 @@ class IndexController extends Controller
 
 
 
-    public function shopSingle($id){
+    public function shopSingle(){
         $medicines= Medicine::all();
+
 
         // $medicines= Medicine::take(1)->get();
         return response()->view('website.shop-single' , compact('medicines'));

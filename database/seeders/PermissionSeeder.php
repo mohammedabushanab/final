@@ -14,15 +14,15 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        // Permission::create(['name' => "Create-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Index-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Edit-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Delete-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Create-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Index-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Edit-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Delete-Permission", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
 
-        // Permission::create(['name' => "Create-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Index-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Edit-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
-        // Permission::create(['name' => "Delete-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Create-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Index-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Edit-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
+        Permission::create(['name' => "Delete-Role", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
 
         Permission::create(['name' => "Create-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);
         Permission::create(['name' => "Index-Admin", 'guard_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]);

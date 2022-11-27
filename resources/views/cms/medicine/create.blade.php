@@ -48,13 +48,14 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4" >
-                    <label for="store_id"> medicine Name</label>
-                    <select class="form-control" name="store_id" style="width: 100%;"
+                     <label for="store_id"> medicine Name</label>
+                 <select class="form-control" name="store_id" style="width: 100%;"
                         id="store_id" aria-label=".form-select-sm example">
                         @foreach ($stores as $store )
                             <option value="{{ $store->id }}" >{{ $store->name }}</option>
                         @endforeach
-                    </select>
+                    </select> 
+                    
                 </div>
                 <div class="form-group col-md-6" >
 

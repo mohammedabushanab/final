@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SaleController;
@@ -33,18 +34,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/temp', function () {
-    return view('website.thankyou');
-});
+// Route::get('/temp', function () {
+//     return view('website.thankyou');
+// );
 Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
     route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
     route::post('{guard}/login', [UserAuthController::class, 'login']);
     route::get('{guard}/register', [RegisterController::class, 'register'])->name('view.register');
-    Route::Post('{guard}/confirm', [RegisterController::class, 'storeRegister']);
+    route::post('{guard}/confirm', [RegisterController::class, 'storeRegister']);
 });
 
-Route::get('/', function () {
-    return view('website.index');
+Route::get('', function () {
+    return view('welcome');
 });
 // Route::prefix('cms/')->middleware('guest:admin,doctor')->group(function () {
 //     route::get('{guard}/login', [UserAuthController::class, 'showLogin'])->name('view.login');
@@ -143,7 +144,7 @@ Route::prefix('/home')->group(function () {
 
     // Route::get('/medicine_de/{id}', [IndexController::class, '']);
 
-    Route::get('website.det/{id}/',[IndexController::class ,'websiteDet'])->name('website.det');
+    Route::get('website.det/{id}',[IndexController::class ,'websiteDet'])->name('website.det');
 });
 
 // });

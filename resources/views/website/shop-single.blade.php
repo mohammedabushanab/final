@@ -29,8 +29,10 @@
 
 
                     <div class="col-md-5 mr-auto">
-                        {{--  <input type="text" name="medicine_id" id="medicine_id" value="{{id}}"
-                        class="form-control form-control-solid" hidden/>  --}}
+                          {{-- <input type="text" name="medicine_id" id="medicine_id" value="{{medicine->id}}"
+                      class="form-control form-control-solid" hidden/> --}}
+                      <input type="text" name="medicine_id" id="medicine_id" value="{{$medicine->id}}"
+                        class="form-control form-control-solid" hidden/>
 
                         <div class="border text-center">
                             <img src="{{asset('/storage/images/medicine/'. $medicine->image)}}" alt="Image" class="img-fluid p-5">
@@ -49,7 +51,7 @@
 
 
 
-                        {{--  <p><a href="{{ route('website.cart') }}" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>  --}}
+                         <p><a href="{{ route('website.cart') }}" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
 
                         <!-- <div class="mt-5">
               <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
